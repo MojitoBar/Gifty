@@ -19,10 +19,8 @@ class ViewController: UIViewController {
     
     private func scanImage(data: Data) {
         let barcodeRequest = VNDetectBarcodesRequest(completionHandler: { [self] request, error in
-            self.reportResults(results: request.results)
-            if request.results!.count > 0{
-                barcodeDatas.append(UIImage(data: data)!)
-            }
+            self.reportResults(results: request.results, data: data)
+            
         })
         let handler = VNImageRequestHandler(data: data, options: [.properties: ""])
         
@@ -31,7 +29,7 @@ class ViewController: UIViewController {
         }
     }
     
-    private func reportResults(results: [Any]?) {
+    private func reportResults(results: [Any]?, data: Data) {
         // Loop through the found results
         guard let results = results else {
             return print("No results found.")
@@ -52,6 +50,9 @@ class ViewController: UIViewController {
                 
                 // Print barcode-values
                 print("Symbology: \(barcode.symbology.rawValue)")
+                if barcode.symbology.rawValue == "VNBarcodeSymbologyCode128"{
+                    barcodeDatas.append(UIImage(data: data)!)
+                }
                 
                 if let desc = barcode.barcodeDescriptor as? CIQRCodeDescriptor {
                     let content = String(data: desc.errorCorrectedPayload, encoding: .utf8)
@@ -119,10 +120,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         let width = collectionView.frame.width / 3 - 1 ///  3등분하여 배치, 옆 간격이 1이므로 1을 빼줌
-        print("collectionView width=\(collectionView.frame.width)")
-        print("cell하나당 width=\(width)")
-        print("root view width = \(self.view.frame.width)")
-
         let size = CGSize(width: width, height: width)
         return size
     }
