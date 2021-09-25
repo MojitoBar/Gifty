@@ -30,17 +30,13 @@ class ViewController: UIViewController {
     }
     
     private func reportResults(results: [Any]?, data: Data) {
+        var check = false
         // Loop through the found results
         guard let results = results else {
             return print("No results found.")
         }
         
-        if results.count > 0 {
-            print("바코드 확인")
-        }
-        
         for result in results {
-            
             // Cast the result to a barcode-observation
             if let barcode = result as? VNBarcodeObservation {
                 
@@ -51,7 +47,7 @@ class ViewController: UIViewController {
                 // Print barcode-values
                 print("Symbology: \(barcode.symbology.rawValue)")
                 if barcode.symbology.rawValue == "VNBarcodeSymbologyCode128"{
-                    barcodeDatas.append(UIImage(data: data)!)
+                    check = true
                 }
                 
                 if let desc = barcode.barcodeDescriptor as? CIQRCodeDescriptor {
@@ -63,6 +59,12 @@ class ViewController: UIViewController {
                     print("Symbol-Version: \(desc.symbolVersion)")
                 }
             }
+        }
+        
+        
+        if results.count > 0 && check{
+            print("바코드 확인")
+            barcodeDatas.append(UIImage(data: data)!)
         }
     }
     
@@ -90,14 +92,17 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(barcodeDatas.count)
         return barcodeDatas.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CSCollectionViewCell
                 
-        cell.backgroundColor = .lightGray
+        cell.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         cell.image.image = barcodeDatas[indexPath.row]
+        cell.image.contentMode = .scaleAspectFill
+        cell.image.frame = CGRect(x: 0, y: 0, width: collectionView.frame.width / 3 - 1, height: collectionView.frame.width / 3 - 1)
         
         return cell
     }
