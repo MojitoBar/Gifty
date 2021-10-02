@@ -12,14 +12,16 @@ import Vision
 import Photos
 
 class ViewController: UIViewController {
-    
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var barcodeDatas: [UIImage] = []
+    public var results: [PHAsset] = []
+    public var fetchPhotos: PHFetchResult<PHAsset>?
     
-    private func scanImage(data: Data) {
+    private var index: Int?
+    private var barcodeDatas: [UIImage] = []
+    private func scanImage(data: Data, photo: PHAsset) {
         let barcodeRequest = VNDetectBarcodesRequest(completionHandler: { [self] request, error in
-            self.reportResults(results: request.results, data: data)
+            self.reportResults(results: request.results, data: data, photo: photo)
             
         })
         let handler = VNImageRequestHandler(data: data, options: [.properties: ""])
@@ -29,7 +31,7 @@ class ViewController: UIViewController {
         }
     }
     
-    private func reportResults(results: [Any]?, data: Data) {
+    private func reportResults(results: [Any]?, data: Data, photo: PHAsset) {
         var check = false
         // Loop through the found results
         guard let results = results else {
@@ -65,23 +67,22 @@ class ViewController: UIViewController {
         if results.count > 0 && check{
             print("바코드 확인")
             barcodeDatas.append(UIImage(data: data)!)
+            self.results.append(photo)
         }
     }
     
     private func setPhotoLibraryImage() {
         let fetchOption = PHFetchOptions()
         fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        let fetchPhotos = PHAsset.fetchAssets(with: fetchOption)
-        print(fetchPhotos.count)
-        DispatchQueue.main.async {
-            for i in 0 ..< fetchPhotos.count {
-                let photo = fetchPhotos.object(at: i)
+        fetchPhotos = PHAsset.fetchAssets(with: fetchOption)
+        DispatchQueue.main.async { [self] in
+            for i in 0 ..< fetchPhotos!.count {
+                let photo = fetchPhotos!.object(at: i)
                 ImageManager.shared.requestImage(from: photo, thumnailSize: CGSize(width: 300, height: 300)) { image in
                 // 가져온 이미지로 (image 파라미터) 하고싶은 행동
                     if let image = image{
                         let data = UIImagePNGRepresentation(image)
-                        self.scanImage(data: data!)
-                        
+                        self.scanImage(data: data!, photo: photo)
                         self.collectionView.reloadData()
                     }
                 }
@@ -105,6 +106,17 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
         cell.image.frame = CGRect(x: 0, y: 0, width: collectionView.frame.width / 3 - 1, height: collectionView.frame.width / 3 - 1)
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vcName = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
+        vcName?.modalTransitionStyle = .coverVertical
+        vcName?.modalPresentationStyle = .fullScreen
+        vcName?.paramImage = barcodeDatas[indexPath.row]
+        vcName?.paramAsset = results[indexPath.row]
+        vcName?.paramFetchResult = fetchPhotos
+        index = indexPath.row
+        self.present(vcName!, animated: true, completion: nil)
     }
 }
 
@@ -158,5 +170,12 @@ extension ViewController {
             fatalError()
         }
         setPhotoLibraryImage()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let index = index{
+            barcodeDatas.remove(at: index)
+        }
+        collectionView.reloadData()
     }
 }

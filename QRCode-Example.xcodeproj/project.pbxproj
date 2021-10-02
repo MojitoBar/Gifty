@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		093ED9EA1F9916820013937C /* VideoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093ED9E91F9916820013937C /* VideoPreviewView.swift */; };
+		B7C9B4762704C3610011BA12 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C9B4752704C3610011BA12 /* DetailViewController.swift */; };
 		B7D3FD2C26FE354C00E1C614 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D3FD2B26FE354C00E1C614 /* ImageManager.swift */; };
 		B7D3FD2E26FE3E4C00E1C614 /* CSCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D3FD2D26FE3E4C00E1C614 /* CSCollectionViewCell.swift */; };
 		DB0D9F221EEAED7C00F7D533 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0D9F211EEAED7C00F7D533 /* AppDelegate.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		093ED9E91F9916820013937C /* VideoPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPreviewView.swift; sourceTree = "<group>"; };
+		B7C9B4752704C3610011BA12 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B7D3FD2B26FE354C00E1C614 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		B7D3FD2D26FE3E4C00E1C614 /* CSCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSCollectionViewCell.swift; sourceTree = "<group>"; };
 		DB0D9F1E1EEAED7C00F7D533 /* QRCode-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QRCode-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +94,7 @@
 				DB0D9F2D1EEAED7D00F7D533 /* Info.plist */,
 				B7D3FD2B26FE354C00E1C614 /* ImageManager.swift */,
 				B7D3FD2D26FE3E4C00E1C614 /* CSCollectionViewCell.swift */,
+				B7C9B4752704C3610011BA12 /* DetailViewController.swift */,
 			);
 			path = "QRCode-Example";
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				093ED9EA1F9916820013937C /* VideoPreviewView.swift in Sources */,
 				DB0D9F241EEAED7C00F7D533 /* ViewController.swift in Sources */,
 				DB0D9F221EEAED7C00F7D533 /* AppDelegate.swift in Sources */,
+				B7C9B4762704C3610011BA12 /* DetailViewController.swift in Sources */,
 				B7D3FD2E26FE3E4C00E1C614 /* CSCollectionViewCell.swift in Sources */,
 				B7D3FD2C26FE354C00E1C614 /* ImageManager.swift in Sources */,
 			);
@@ -364,7 +368,7 @@
 				DEVELOPMENT_TEAM = X843D4L2C2;
 				INFOPLIST_FILE = "QRCode-Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.code.ju;
+				PRODUCT_BUNDLE_IDENTIFIER = com.code.ji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -378,7 +382,7 @@
 				DEVELOPMENT_TEAM = X843D4L2C2;
 				INFOPLIST_FILE = "QRCode-Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.code.ju;
+				PRODUCT_BUNDLE_IDENTIFIER = com.code.ji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

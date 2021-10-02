@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -67,8 +67,56 @@
             </objects>
             <point key="canvasLocation" x="20.289855072463769" y="31.473214285714285"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="qXf-6f-9Ay">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="SLo-cp-RI9" customClass="DetailViewController" customModule="QRCode_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Eom-HW-hmh"/>
+                        <viewControllerLayoutGuide type="bottom" id="xQI-82-Toy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MFa-Oa-MTD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xSW-ke-YqH">
+                                <rect key="frame" x="20" y="114" width="374" height="748"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apc-q5-ms8">
+                                <rect key="frame" x="350" y="64" width="64" height="48"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title=" ">
+                                    <backgroundConfiguration key="background" image="trash" catalog="system" imageContentMode="scaleAspectFit"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="deleteBtn:" destination="SLo-cp-RI9" eventType="touchUpInside" id="bDN-qH-PTa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xSW-ke-YqH" firstAttribute="leading" secondItem="MFa-Oa-MTD" secondAttribute="leadingMargin" id="2HV-aM-YiX"/>
+                            <constraint firstItem="apc-q5-ms8" firstAttribute="top" secondItem="Eom-HW-hmh" secondAttribute="bottom" constant="20" id="6b5-kT-Iw4"/>
+                            <constraint firstItem="xSW-ke-YqH" firstAttribute="top" secondItem="apc-q5-ms8" secondAttribute="top" constant="50" id="98U-51-eoQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xSW-ke-YqH" secondAttribute="trailing" id="CjS-OJ-CLX"/>
+                            <constraint firstItem="xQI-82-Toy" firstAttribute="top" secondItem="xSW-ke-YqH" secondAttribute="bottom" id="Dh0-ip-0VY"/>
+                            <constraint firstAttribute="trailing" secondItem="apc-q5-ms8" secondAttribute="trailing" id="Oir-NK-mG6"/>
+                            <constraint firstItem="xQI-82-Toy" firstAttribute="top" secondItem="apc-q5-ms8" secondAttribute="bottom" constant="750" id="PX3-ey-c9u"/>
+                            <constraint firstItem="apc-q5-ms8" firstAttribute="leading" secondItem="MFa-Oa-MTD" secondAttribute="leading" constant="350" id="erA-Sj-p5v"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageVIew" destination="xSW-ke-YqH" id="ffj-YP-Ng4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YDM-fC-3rK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="746" y="31"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="trash" catalog="system" width="121" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
