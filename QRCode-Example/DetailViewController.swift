@@ -11,6 +11,13 @@ import Photos
 
 class DetailViewController: UIViewController {
     @IBOutlet weak var imageVIew: UIImageView!
+    
+    @IBAction func backBtn(_ sender: Any) {
+        DispatchQueue.main.async {
+            (self.presentingViewController as? ViewController)!.index = nil
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
     @IBAction func deleteBtn(_ sender: Any) {
         if let paramAsset = paramAsset {
             PHPhotoLibrary.shared().performChanges {

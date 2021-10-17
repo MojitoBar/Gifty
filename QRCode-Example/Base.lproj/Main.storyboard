@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -82,15 +82,28 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xSW-ke-YqH">
                                 <rect key="frame" x="20" y="114" width="374" height="748"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apc-q5-ms8">
-                                <rect key="frame" x="350" y="64" width="64" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apc-q5-ms8">
+                                <rect key="frame" x="364" y="64" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="OGw-CV-tf3"/>
+                                    <constraint firstAttribute="width" constant="50" id="SJr-K8-2q6"/>
+                                </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title=" ">
-                                    <backgroundConfiguration key="background" image="trash" catalog="system" imageContentMode="scaleAspectFit"/>
-                                </buttonConfiguration>
+                                <state key="normal" title="Button" image="trash" catalog="system"/>
                                 <connections>
                                     <action selector="deleteBtn:" destination="SLo-cp-RI9" eventType="touchUpInside" id="bDN-qH-PTa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTh-C2-l6M">
+                                <rect key="frame" x="20" y="64" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="uAY-1C-baT"/>
+                                    <constraint firstAttribute="height" constant="50" id="zMj-NO-fkc"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button" image="chevron.backward" catalog="system"/>
+                                <connections>
+                                    <action selector="backBtn:" destination="SLo-cp-RI9" eventType="touchUpInside" id="gpL-zw-Xpu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -98,12 +111,12 @@
                         <constraints>
                             <constraint firstItem="xSW-ke-YqH" firstAttribute="leading" secondItem="MFa-Oa-MTD" secondAttribute="leadingMargin" id="2HV-aM-YiX"/>
                             <constraint firstItem="apc-q5-ms8" firstAttribute="top" secondItem="Eom-HW-hmh" secondAttribute="bottom" constant="20" id="6b5-kT-Iw4"/>
-                            <constraint firstItem="xSW-ke-YqH" firstAttribute="top" secondItem="apc-q5-ms8" secondAttribute="top" constant="50" id="98U-51-eoQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xSW-ke-YqH" secondAttribute="trailing" id="CjS-OJ-CLX"/>
                             <constraint firstItem="xQI-82-Toy" firstAttribute="top" secondItem="xSW-ke-YqH" secondAttribute="bottom" id="Dh0-ip-0VY"/>
                             <constraint firstAttribute="trailing" secondItem="apc-q5-ms8" secondAttribute="trailing" id="Oir-NK-mG6"/>
-                            <constraint firstItem="xQI-82-Toy" firstAttribute="top" secondItem="apc-q5-ms8" secondAttribute="bottom" constant="750" id="PX3-ey-c9u"/>
-                            <constraint firstItem="apc-q5-ms8" firstAttribute="leading" secondItem="MFa-Oa-MTD" secondAttribute="leading" constant="350" id="erA-Sj-p5v"/>
+                            <constraint firstItem="xSW-ke-YqH" firstAttribute="top" secondItem="apc-q5-ms8" secondAttribute="bottom" id="cVQ-4g-6cb"/>
+                            <constraint firstItem="aTh-C2-l6M" firstAttribute="leading" secondItem="MFa-Oa-MTD" secondAttribute="leading" constant="20" id="pdN-ma-vm1"/>
+                            <constraint firstItem="aTh-C2-l6M" firstAttribute="top" secondItem="Eom-HW-hmh" secondAttribute="bottom" constant="20" id="z53-rC-bcF"/>
                         </constraints>
                     </view>
                     <connections>
@@ -112,10 +125,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YDM-fC-3rK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="746" y="31"/>
+            <point key="canvasLocation" x="744.92753623188412" y="30.803571428571427"/>
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="trash" catalog="system" width="121" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
