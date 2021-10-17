@@ -5,19 +5,19 @@
 //  Created by Hans Knöchel on 09.06.17.
 //  Copyright © 2017 Hans Knoechel. All rights reserved.
 //
-
 import AVKit
 import UIKit
 import Vision
 import Photos
+import Lottie
 
 class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     public var results: [PHAsset] = []
     public var fetchPhotos: PHFetchResult<PHAsset>?
+    public var index: Int?
     
-    private var index: Int?
     private var barcodeDatas: [UIImage] = []
     private func scanImage(data: Data, photo: PHAsset) {
         let barcodeRequest = VNDetectBarcodesRequest(completionHandler: { [self] request, error in
@@ -89,6 +89,18 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    public func setLoading(){
+        let animationView = AnimationView(name: "loading-animation")
+        animationView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
+        animationView.center = self.view.center
+        animationView.contentMode = .scaleAspectFill
+        
+        view.addSubview(animationView)
+        
+        animationView.loopMode = .loop
+        animationView.play()
+    }
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
@@ -145,9 +157,10 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 // MARK: UIViewControllerDelegate
 
 extension ViewController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setLoading()
+        
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         switch PHPhotoLibrary.authorizationStatus(){
