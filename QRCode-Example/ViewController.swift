@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     public var fetchPhotos: PHFetchResult<PHAsset>?
     public var index: Int?
     
+    let animationView = AnimationView(name: "loading-animation")
+    let label = UILabel()
     private var barcodeDatas: [UIImage] = []
     private func scanImage(data: Data, photo: PHAsset) {
         let barcodeRequest = VNDetectBarcodesRequest(completionHandler: { [self] request, error in
@@ -75,31 +77,25 @@ class ViewController: UIViewController {
         let fetchOption = PHFetchOptions()
         fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         fetchPhotos = PHAsset.fetchAssets(with: fetchOption)
-        DispatchQueue.main.async { [self] in
-            for i in 0 ..< fetchPhotos!.count {
-                let photo = fetchPhotos!.object(at: i)
-                ImageManager.shared.requestImage(from: photo, thumnailSize: CGSize(width: 300, height: 300)) { image in
-                // 가져온 이미지로 (image 파라미터) 하고싶은 행동
-                    if let image = image{
-                        let data = UIImagePNGRepresentation(image)
-                        self.scanImage(data: data!, photo: photo)
-                        self.collectionView.reloadData()
-                    }
+        for i in 0 ..< fetchPhotos!.count {
+            let photo = fetchPhotos!.object(at: i)
+            ImageManager.shared.requestImage(from: photo, thumnailSize: CGSize(width: 300, height: 300)) { image in
+            // 가져온 이미지로 (image 파라미터) 하고싶은 행동
+                if let image = image{
+                    let data = UIImagePNGRepresentation(image)
+                    self.scanImage(data: data!, photo: photo)
                 }
             }
         }
     }
     
     public func setLoading(){
-        let animationView = AnimationView(name: "loading-animation")
-        animationView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
-        animationView.center = self.view.center
-        animationView.contentMode = .scaleAspectFill
-        
-        view.addSubview(animationView)
-        
-        animationView.loopMode = .loop
-        animationView.play()
+        view.addSubview(label)
+        label.frame = CGRect(x: UIScreen.main.bounds.width / 2 - 150, y: UIScreen.main.bounds.height / 2 - 150, width: 300, height: 300)
+        label.text = "Loading..."
+        label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.bold)
+        label.textAlignment = .center
+        label.contentMode = .scaleAspectFit
     }
 }
 
@@ -159,8 +155,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 extension ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLoading()
-        
+        self.setLoading()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         switch PHPhotoLibrary.authorizationStatus(){
@@ -182,7 +177,7 @@ extension ViewController {
         @unknown default:
             fatalError()
         }
-        setPhotoLibraryImage()
+        self.setPhotoLibraryImage()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -190,5 +185,6 @@ extension ViewController {
             barcodeDatas.remove(at: index)
         }
         collectionView.reloadData()
+        label.isHidden = true
     }
 }
