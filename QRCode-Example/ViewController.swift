@@ -9,7 +9,6 @@ import AVKit
 import UIKit
 import Vision
 import Photos
-import Lottie
 
 class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
@@ -18,9 +17,10 @@ class ViewController: UIViewController {
     public var fetchPhotos: PHFetchResult<PHAsset>?
     public var index: Int?
     
-    let animationView = AnimationView(name: "loading-animation")
     let label = UILabel()
     private var barcodeDatas: [UIImage] = []
+    
+    // 이미지 스캔
     private func scanImage(data: Data, photo: PHAsset) {
         let barcodeRequest = VNDetectBarcodesRequest(completionHandler: { [self] request, error in
             self.reportResults(results: request.results, data: data, photo: photo)
@@ -33,6 +33,7 @@ class ViewController: UIViewController {
         }
     }
     
+    // 스캔 결과
     private func reportResults(results: [Any]?, data: Data, photo: PHAsset) {
         var check = false
         // Loop through the found results
@@ -50,6 +51,7 @@ class ViewController: UIViewController {
                 
                 // Print barcode-values
                 print("Symbology: \(barcode.symbology.rawValue)")
+                // QRCode 제외
                 if barcode.symbology.rawValue == "VNBarcodeSymbologyCode128"{
                     check = true
                 }
@@ -65,7 +67,7 @@ class ViewController: UIViewController {
             }
         }
         
-        
+        // 바코드인 경우
         if results.count > 0 && check{
             print("바코드 확인")
             barcodeDatas.append(UIImage(data: data)!)
@@ -73,6 +75,7 @@ class ViewController: UIViewController {
         }
     }
     
+    // 사진 앱에서 이미지 가져오기
     private func setPhotoLibraryImage() {
         let fetchOption = PHFetchOptions()
         fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
@@ -92,7 +95,7 @@ class ViewController: UIViewController {
     public func setLoading(){
         view.addSubview(label)
         label.frame = CGRect(x: UIScreen.main.bounds.width / 2 - 150, y: UIScreen.main.bounds.height / 2 - 150, width: 300, height: 300)
-        label.text = "Loading..."
+        label.text = "Gifty Image Loading..."
         label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.bold)
         label.textAlignment = .center
         label.contentMode = .scaleAspectFit
