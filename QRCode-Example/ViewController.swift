@@ -15,10 +15,12 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var loadingLabel: UILabel!
     @IBAction func fetchButton(_ sender: Any) {
+        activityIndicator.startAnimating()
         OperationQueue().addOperation{ [self] in
+//            activityIndicator.startAnimating()
             OperationQueue.main.addOperation{
                 activityIndicator.startAnimating()
-                loadingLabel.isHidden = true
+//                loadingLabel.isHidden = false
             }
             OperationQueue.main.addOperation {
                 barcodeDatas = []
