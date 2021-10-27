@@ -81,15 +81,29 @@ class ViewController: UIViewController {
         fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         fetchPhotos = PHAsset.fetchAssets(with: fetchOption)
         for i in 0 ..< fetchPhotos!.count {
-            let photo = fetchPhotos!.object(at: i)
-            ImageManager.shared.requestImage(from: photo, thumnailSize: CGSize(width: 300, height: 300)) { image in
-            // 가져온 이미지로 (image 파라미터) 하고싶은 행동
+            autoreleasepool {
+                var photo: PHAsset? = fetchPhotos!.object(at: i)
+                
+                var image: UIImage? = getAssetThumbnail(asset: photo!)
                 if let image = image{
                     let data = UIImagePNGRepresentation(image)
-                    self.scanImage(data: data!, photo: photo)
+                    scanImage(data: data!, photo: photo!)
                 }
+                image = nil
+                photo = nil
             }
         }
+    }
+    
+    func getAssetThumbnail(asset: PHAsset) -> UIImage {
+        let manager = PHImageManager.default()
+        let option = PHImageRequestOptions()
+        var thumbnail = UIImage()
+        option.isSynchronous = true
+        manager.requestImage(for: asset, targetSize: CGSize(width: 300, height: 300), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
+            thumbnail = result!
+        })
+        return thumbnail
     }
     
     public func setLoading(){
@@ -110,7 +124,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CSCollectionViewCell
-                
+        
         cell.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         cell.image.image = barcodeDatas[indexPath.row]
         cell.image.contentMode = .scaleAspectFill
@@ -133,20 +147,20 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
 
 // cell layout
 extension ViewController: UICollectionViewDelegateFlowLayout {
-
+    
     // 위 아래 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }
-
+    
     // 옆 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }
-
+    
     // cell 사이즈( 옆 라인을 고려하여 설정 )
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+        
         let width = collectionView.frame.width / 3 - 1 ///  3등분하여 배치, 옆 간격이 1이므로 1을 빼줌
         let size = CGSize(width: width, height: width)
         return size
