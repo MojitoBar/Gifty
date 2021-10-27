@@ -13,6 +13,22 @@ import Photos
 class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var loadingLabel: UILabel!
+    @IBAction func fetchButton(_ sender: Any) {
+        OperationQueue().addOperation{ [self] in
+            OperationQueue.main.addOperation{
+                activityIndicator.startAnimating()
+                loadingLabel.isHidden = true
+            }
+            OperationQueue.main.addOperation {
+                barcodeDatas = []
+                collectionView.reloadData()
+                setPhotoLibraryImage()
+                collectionView.reloadData()
+                activityIndicator.stopAnimating()
+            }
+        }
+    }
     public var results: [PHAsset] = []
     public var fetchPhotos: PHFetchResult<PHAsset>?
     public var index: Int?
@@ -80,6 +96,7 @@ class ViewController: UIViewController {
         let fetchOption = PHFetchOptions()
         fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         fetchPhotos = PHAsset.fetchAssets(with: fetchOption)
+        
         for i in 0 ..< fetchPhotos!.count {
             autoreleasepool {
                 var photo: PHAsset? = fetchPhotos!.object(at: i)
@@ -95,6 +112,19 @@ class ViewController: UIViewController {
         }
     }
     
+    lazy var activityIndicator: UIActivityIndicatorView = {
+        // Create an indicator.
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        activityIndicator.center = self.view.center
+        activityIndicator.color = UIColor.red
+        // Also show the indicator even when the animation is stopped.
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorView.Style.white
+        // Start animation.
+        activityIndicator.stopAnimating()
+        return activityIndicator }()
+    
     func getAssetThumbnail(asset: PHAsset) -> UIImage {
         let manager = PHImageManager.default()
         let option = PHImageRequestOptions()
@@ -104,15 +134,6 @@ class ViewController: UIViewController {
             thumbnail = result!
         })
         return thumbnail
-    }
-    
-    public func setLoading(){
-        view.addSubview(label)
-        label.frame = CGRect(x: UIScreen.main.bounds.width / 2 - 150, y: UIScreen.main.bounds.height / 2 - 150, width: 300, height: 300)
-        label.text = "Gifty Image Loading..."
-        label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.bold)
-        label.textAlignment = .center
-        label.contentMode = .scaleAspectFit
     }
 }
 
@@ -172,7 +193,9 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 extension ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setLoading()
+        self.view.addSubview(self.activityIndicator)
+        
+        loadingLabel.isHidden = true
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         switch PHPhotoLibrary.authorizationStatus(){
@@ -194,7 +217,6 @@ extension ViewController {
         @unknown default:
             fatalError()
         }
-        self.setPhotoLibraryImage()
     }
     
     override func viewDidAppear(_ animated: Bool) {
