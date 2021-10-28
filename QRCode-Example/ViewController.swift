@@ -106,7 +106,9 @@ class ViewController: UIViewController {
                 var image: UIImage? = getAssetThumbnail(asset: photo!)
                 if let image = image{
                     let data = UIImagePNGRepresentation(image)
-                    scanImage(data: data!, photo: photo!)
+                    if let data = data{
+                        scanImage(data: data, photo: photo!)
+                    }
                 }
                 image = nil
                 photo = nil
@@ -131,9 +133,12 @@ class ViewController: UIViewController {
         let manager = PHImageManager.default()
         let option = PHImageRequestOptions()
         var thumbnail = UIImage()
+//        option.deliveryMode = .highQualityFormat
         option.isSynchronous = true
         manager.requestImage(for: asset, targetSize: CGSize(width: 300, height: 300), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
-            thumbnail = result!
+            if let result = result{
+                thumbnail = result
+            }
         })
         return thumbnail
     }
