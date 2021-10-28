@@ -170,6 +170,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
         vcName?.paramAsset = results[indexPath.row]
         vcName?.paramFetchResult = fetchPhotos
         index = indexPath.row
+        print(index)
+        print(barcodeDatas)
         self.present(vcName!, animated: true, completion: nil)
     }
 }
@@ -230,6 +232,7 @@ extension ViewController {
     override func viewDidAppear(_ animated: Bool) {
         if let index = index{
             barcodeDatas.remove(at: index)
+            results.remove(at: index)
         }
         collectionView.reloadData()
         label.isHidden = true
