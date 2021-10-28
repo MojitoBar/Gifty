@@ -21,10 +21,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMP-Fx-10k">
-                                <rect key="frame" x="10" y="54" width="61" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMP-Fx-10k">
+                                <rect key="frame" x="357.66666666666669" y="54" width="46.333333333333314" height="31"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Fetch"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.clockwise" catalog="system" title=" "/>
                                 <connections>
                                     <action selector="fetchButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hxa-cz-pk4"/>
                                 </connections>
@@ -73,9 +74,9 @@
                             <constraint firstAttribute="trailing" secondItem="kqL-N9-fPs" secondAttribute="trailing" id="ChM-Vf-YjE"/>
                             <constraint firstItem="4FJ-gN-GVu" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="EH5-zI-KEy"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="kqL-N9-fPs" secondAttribute="bottom" id="IGl-PA-u1V"/>
-                            <constraint firstItem="cMP-Fx-10k" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="LjN-HR-fPb"/>
                             <constraint firstItem="4FJ-gN-GVu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Qou-EV-AOi"/>
                             <constraint firstItem="kqL-N9-fPs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="W8q-vf-Itp"/>
+                            <constraint firstAttribute="trailing" secondItem="cMP-Fx-10k" secondAttribute="trailing" constant="10" id="jfu-My-Zc0"/>
                         </constraints>
                     </view>
                     <connections>
@@ -153,6 +154,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="trash" catalog="system" width="121" height="128"/>
         <systemColor name="systemBackgroundColor">
