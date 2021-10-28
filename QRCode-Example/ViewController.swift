@@ -16,11 +16,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var loadingLabel: UILabel!
     @IBAction func fetchButton(_ sender: Any) {
         activityIndicator.startAnimating()
+        loadingLabel.isHidden = true
         OperationQueue().addOperation{ [self] in
 //            activityIndicator.startAnimating()
             OperationQueue.main.addOperation{
                 activityIndicator.startAnimating()
-//                loadingLabel.isHidden = false
+                loadingLabel.isHidden = true
             }
             OperationQueue.main.addOperation {
                 barcodeDatas = []
@@ -135,7 +136,7 @@ class ViewController: UIViewController {
         var thumbnail = UIImage()
 //        option.deliveryMode = .highQualityFormat
         option.isSynchronous = true
-        manager.requestImage(for: asset, targetSize: CGSize(width: 300, height: 300), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
+        manager.requestImage(for: asset, targetSize: CGSize(width: 500, height: 500), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
             if let result = result{
                 thumbnail = result
             }
@@ -202,7 +203,7 @@ extension ViewController {
         super.viewDidLoad()
         self.view.addSubview(self.activityIndicator)
         
-        loadingLabel.isHidden = true
+        loadingLabel.isHidden = false
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         switch PHPhotoLibrary.authorizationStatus(){
