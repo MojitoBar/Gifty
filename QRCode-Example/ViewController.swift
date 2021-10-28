@@ -13,15 +13,18 @@ import Photos
 class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var fetchButton: UIButton!
     @IBOutlet weak var loadingLabel: UILabel!
     @IBAction func fetchButton(_ sender: Any) {
         activityIndicator.startAnimating()
+        fetchButton.isHidden = true
         loadingLabel.isHidden = true
         OperationQueue().addOperation{ [self] in
 //            activityIndicator.startAnimating()
             OperationQueue.main.addOperation{
                 activityIndicator.startAnimating()
                 loadingLabel.isHidden = true
+                fetchButton.isHidden = true
             }
             OperationQueue.main.addOperation {
                 barcodeDatas = []
