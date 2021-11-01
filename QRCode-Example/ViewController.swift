@@ -13,25 +13,44 @@ import Photos
 class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var loadingPer: UILabel!
     @IBOutlet weak var fetchButton: UIButton!
     @IBOutlet weak var loadingLabel: UILabel!
+    
+    var loading = 0
+    
     @IBAction func fetchButton(_ sender: Any) {
         activityIndicator.startAnimating()
+        loadingPer.isHidden = false
         fetchButton.isHidden = true
         loadingLabel.isHidden = true
-        OperationQueue().addOperation{ [self] in
-//            activityIndicator.startAnimating()
-            OperationQueue.main.addOperation{
-                activityIndicator.startAnimating()
-                loadingLabel.isHidden = true
-                fetchButton.isHidden = true
-            }
-            OperationQueue.main.addOperation {
-                barcodeDatas = []
+//        OperationQueue().addOperation{ [self] in
+////            activityIndicator.startAnimating()
+//            OperationQueue.main.addOperation{
+//                activityIndicator.startAnimating()
+//                loadingLabel.isHidden = true
+//                fetchButton.isHidden = true
+//            }
+//            OperationQueue.main.addOperation {
+//                barcodeDatas = []
+//                collectionView.reloadData()
+//                setPhotoLibraryImage()
+//                collectionView.reloadData()
+//                activityIndicator.stopAnimating()
+//            }
+//        }
+        DispatchQueue.global(qos: .userInitiated).async { [self] in
+            barcodeDatas = []
+            
+            DispatchQueue.main.async { [self] in
                 collectionView.reloadData()
-                setPhotoLibraryImage()
+            }
+            setPhotoLibraryImage()
+            
+            DispatchQueue.main.async { [self] in
                 collectionView.reloadData()
                 activityIndicator.stopAnimating()
+                loadingPer.isHidden = true
             }
         }
     }
@@ -104,9 +123,12 @@ class ViewController: UIViewController {
         fetchPhotos = PHAsset.fetchAssets(with: fetchOption)
         
         for i in 0 ..< fetchPhotos!.count {
+            DispatchQueue.main.async { [self] in
+                // 3
+                setText()
+            }
             autoreleasepool {
                 var photo: PHAsset? = fetchPhotos!.object(at: i)
-                
                 var image: UIImage? = getAssetThumbnail(asset: photo!)
                 if let image = image{
                     let data = UIImagePNGRepresentation(image)
@@ -117,7 +139,13 @@ class ViewController: UIViewController {
                 image = nil
                 photo = nil
             }
+            
+            loading += 1
         }
+    }
+    
+    private func setText(){
+        loadingPer.text = String(format: "%.1f", (Double(loading) / Double(fetchPhotos!.count) * 100)) + "%"
     }
     
     lazy var activityIndicator: UIActivityIndicatorView = {
@@ -137,9 +165,9 @@ class ViewController: UIViewController {
         let manager = PHImageManager.default()
         let option = PHImageRequestOptions()
         var thumbnail = UIImage()
-//        option.deliveryMode = .highQualityFormat
+        option.deliveryMode = .highQualityFormat
         option.isSynchronous = true
-        manager.requestImage(for: asset, targetSize: CGSize(width: 500, height: 500), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
+        manager.requestImage(for: asset, targetSize: CGSize(width: 550, height: 550), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
             if let result = result{
                 thumbnail = result
             }
@@ -208,6 +236,9 @@ extension ViewController {
         super.viewDidLoad()
         self.view.addSubview(self.activityIndicator)
         
+        loadingPer.text = "0"
+        
+        loadingPer.isHidden = true
         loadingLabel.isHidden = false
         self.collectionView.delegate = self
         self.collectionView.dataSource = self

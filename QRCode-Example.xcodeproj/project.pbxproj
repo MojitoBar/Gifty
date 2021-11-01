@@ -478,7 +478,7 @@
 				DEVELOPMENT_TEAM = X843D4L2C2;
 				INFOPLIST_FILE = "QRCode-Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.code.ji;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gifty.ji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -496,7 +496,7 @@
 				DEVELOPMENT_TEAM = X843D4L2C2;
 				INFOPLIST_FILE = "QRCode-Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.code.ji;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gifty.ji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
