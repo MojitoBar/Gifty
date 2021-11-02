@@ -11,28 +11,32 @@ import Vision
 import Photos
 
 class ViewController: UIViewController {
+    // MARK: - IBOutlet Variable
     @IBOutlet weak var collectionView: UICollectionView!
-    
     @IBOutlet weak var loadingPer: UILabel!
     @IBOutlet weak var fetchButton: UIButton!
     @IBOutlet weak var loadingLabel: UILabel!
     
-    var loading = 0
-    
+    // MARK: -IBAction Function
     @IBAction func fetchButton(_ sender: Any) {
+        // 애니메이션 시작
         activityIndicator.startAnimating()
+        // UI변화
         loadingPer.isHidden = false
         fetchButton.isHidden = true
         loadingLabel.isHidden = true
         
+        // global 쓰레드 생성
         DispatchQueue.global(qos: .userInitiated).async { [self] in
             barcodeDatas = []
             
+            // UI변화는 main thread 에서
             DispatchQueue.main.async { [self] in
                 collectionView.reloadData()
             }
             setPhotoLibraryImage()
             
+            // UI변화는 main thread 에서
             DispatchQueue.main.async { [self] in
                 collectionView.reloadData()
                 activityIndicator.stopAnimating()
@@ -40,14 +44,18 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: - Public Variable
     public var results: [PHAsset] = []
     public var fetchPhotos: PHFetchResult<PHAsset>?
     public var index: Int?
     
-    let label = UILabel()
+    // MARK: - Private Variable
+    private let label = UILabel()
     private var barcodeDatas: [UIImage] = []
+    private var loading = 0
     
-    // 이미지 스캔
+    // MARK: - 이미지 스캔
     private func scanImage(data: Data, photo: PHAsset) {
         let barcodeRequest = VNDetectBarcodesRequest(completionHandler: { [self] request, error in
             self.reportResults(results: request.results, data: data, photo: photo)
@@ -60,7 +68,7 @@ class ViewController: UIViewController {
         }
     }
     
-    // 스캔 결과
+    // MARK: - 스캔 결과
     private func reportResults(results: [Any]?, data: Data, photo: PHAsset) {
         var check = false
         // Loop through the found results
@@ -102,7 +110,7 @@ class ViewController: UIViewController {
         }
     }
     
-    // 사진 앱에서 이미지 가져오기
+    // MARK: - 사진 앱에서 이미지 가져오기
     private func setPhotoLibraryImage() {
         let fetchOption = PHFetchOptions()
         fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
@@ -130,10 +138,12 @@ class ViewController: UIViewController {
         }
     }
     
+    // MARK: - Set Loading Text
     private func setText(){
         loadingPer.text = String(format: "%.1f", (Double(loading) / Double(fetchPhotos!.count) * 100)) + "%"
     }
     
+    // MARK: - Loading Animation Indicator
     lazy var activityIndicator: UIActivityIndicatorView = {
         // Create an indicator.
         let activityIndicator = UIActivityIndicatorView()
@@ -147,6 +157,7 @@ class ViewController: UIViewController {
         activityIndicator.stopAnimating()
         return activityIndicator }()
     
+    // MARK: - PHAsset to UIImage Function
     func getAssetThumbnail(asset: PHAsset) -> UIImage {
         let manager = PHImageManager.default()
         let option = PHImageRequestOptions()
@@ -162,6 +173,7 @@ class ViewController: UIViewController {
     }
 }
 
+// MARK: - Extension UICollectionViewDelegate & UICollectionViewDataSource
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print(barcodeDatas.count)
@@ -187,13 +199,11 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
         vcName?.paramAsset = results[indexPath.row]
         vcName?.paramFetchResult = fetchPhotos
         index = indexPath.row
-        print(index)
-        print(barcodeDatas)
         self.present(vcName!, animated: true, completion: nil)
     }
 }
 
-// cell layout
+// MARK: - Extension UICollectionViewDelegateFlowLayout
 extension ViewController: UICollectionViewDelegateFlowLayout {
     
     // 위 아래 간격
@@ -215,8 +225,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: UIViewControllerDelegate
-
+// MARK: - ViewController Life Cycle
 extension ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
