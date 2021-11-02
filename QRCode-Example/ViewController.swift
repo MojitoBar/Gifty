@@ -24,21 +24,7 @@ class ViewController: UIViewController {
         loadingPer.isHidden = false
         fetchButton.isHidden = true
         loadingLabel.isHidden = true
-//        OperationQueue().addOperation{ [self] in
-////            activityIndicator.startAnimating()
-//            OperationQueue.main.addOperation{
-//                activityIndicator.startAnimating()
-//                loadingLabel.isHidden = true
-//                fetchButton.isHidden = true
-//            }
-//            OperationQueue.main.addOperation {
-//                barcodeDatas = []
-//                collectionView.reloadData()
-//                setPhotoLibraryImage()
-//                collectionView.reloadData()
-//                activityIndicator.stopAnimating()
-//            }
-//        }
+        
         DispatchQueue.global(qos: .userInitiated).async { [self] in
             barcodeDatas = []
             
