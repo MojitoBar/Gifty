@@ -17,9 +17,44 @@ class ViewController: UIViewController {
     @IBOutlet weak var fetchButton: UIButton!
     @IBOutlet weak var loadingLabel: UILabel!
     @IBOutlet weak var loadImageLabel: UILabel!
+    @IBOutlet weak var reloadBtn: UIButton!
     
     // MARK: -IBAction Function
+    @IBAction func reloadBtn(_ sender: Any) {
+        if !isLoading {
+            isLoading = true
+            // loading 초기화
+            loading = 0
+            // 애니메이션 시작
+            activityIndicator.startAnimating()
+            // UI변화
+            loadingPer.isHidden = false
+            fetchButton.isHidden = true
+            loadingLabel.isHidden = true
+            
+            // global 쓰레드 생성
+            DispatchQueue.global(qos: .userInitiated).async { [self] in
+                barcodeDatas = []
+                
+                // UI변화는 main thread 에서
+                DispatchQueue.main.async { [self] in
+                    collectionView.reloadData()
+                }
+                setPhotoLibraryImage()
+                
+                // UI변화는 main thread 에서
+                DispatchQueue.main.async { [self] in
+                    collectionView.reloadData()
+                    activityIndicator.stopAnimating()
+                    loadingPer.isHidden = true
+                }
+                isLoading = false
+            }
+        }
+    }
+    
     @IBAction func fetchButton(_ sender: Any) {
+        isLoading = true
         // 애니메이션 시작
         activityIndicator.startAnimating()
         // UI변화
@@ -43,6 +78,7 @@ class ViewController: UIViewController {
                 activityIndicator.stopAnimating()
                 loadingPer.isHidden = true
             }
+            isLoading = false
         }
     }
     
@@ -55,6 +91,7 @@ class ViewController: UIViewController {
     private let label = UILabel()
     private var barcodeDatas: [UIImage] = []
     private var loading = 0
+    private var isLoading = false
     
     // MARK: - 이미지 스캔
     private func scanImage(data: Data, photo: PHAsset) {
@@ -136,10 +173,6 @@ class ViewController: UIViewController {
             }
             loading += 1
         }
-        
-        DispatchQueue.main.async { [self] in
-            loadImageLabel.text = "불러온 이미지는 \(barcodeDatas.count) 개 입니다."
-        }
     }
     
     // MARK: - Set Loading Text
@@ -180,7 +213,9 @@ class ViewController: UIViewController {
 // MARK: - Extension UICollectionViewDelegate & UICollectionViewDataSource
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(barcodeDatas.count)
+        DispatchQueue.main.async { [self] in
+            loadImageLabel.text = "불러온 이미지는 \(barcodeDatas.count) 개 입니다."
+        }
         
         return barcodeDatas.count
     }
@@ -235,6 +270,7 @@ extension ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(self.activityIndicator)
+        setUI()
         
         loadingPer.text = "0"
         
@@ -270,5 +306,12 @@ extension ViewController {
         }
         collectionView.reloadData()
         label.isHidden = true
+    }
+}
+
+extension ViewController {
+    // UI SETUP
+    func setUI() {
+        reloadBtn.setTitle("", for: .normal)
     }
 }
