@@ -97,6 +97,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIH-3a-Egc">
+                                <rect key="frame" x="354" y="54" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="e0u-BI-9Ui"/>
+                                    <constraint firstAttribute="width" constant="40" id="uZW-kX-Xcf"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.clockwise" catalog="system"/>
+                                <connections>
+                                    <action selector="reloadBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gP7-aa-JdR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -111,6 +124,8 @@
                             <constraint firstItem="gUv-Fa-XU7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="Vhs-3i-eeM"/>
                             <constraint firstItem="kqL-N9-fPs" firstAttribute="top" secondItem="gUv-Fa-XU7" secondAttribute="top" constant="50" id="g9B-ha-ru6"/>
                             <constraint firstItem="gUv-Fa-XU7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="hgU-L1-XBt"/>
+                            <constraint firstAttribute="trailing" secondItem="sIH-3a-Egc" secondAttribute="trailing" constant="20" id="qnS-Z9-g6K"/>
+                            <constraint firstItem="sIH-3a-Egc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="tzF-6d-z12"/>
                             <constraint firstItem="cMP-Fx-10k" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wws-Zv-bk6"/>
                         </constraints>
                     </view>
@@ -120,6 +135,7 @@
                         <outlet property="loadImageLabel" destination="gUv-Fa-XU7" id="XF8-YE-dWT"/>
                         <outlet property="loadingLabel" destination="4FJ-gN-GVu" id="9An-vl-HES"/>
                         <outlet property="loadingPer" destination="fUp-NV-a89" id="eMe-dw-dUH"/>
+                        <outlet property="reloadBtn" destination="sIH-3a-Egc" id="rmX-J2-anR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -192,6 +208,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="chevron.backward" catalog="system" width="32" height="32"/>
         <image name="square.grid.3x1.folder.badge.plus" catalog="system" width="32" height="32"/>
         <image name="trash" catalog="system" width="32" height="32"/>
