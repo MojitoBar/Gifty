@@ -79,6 +79,8 @@ class ViewController: UIViewController {
                 loadingPer.isHidden = true
             }
             isLoading = false
+            
+            setFileManager()
         }
     }
     
@@ -86,6 +88,40 @@ class ViewController: UIViewController {
     public var results: [PHAsset] = []
     public var fetchPhotos: PHFetchResult<PHAsset>?
     public var index: Int?
+    public let fileManager = FileManager.default
+    
+    /// https://memohg.tistory.com/119
+    /// 이미지 로컬에 저장하고 불러오는 기능
+    func setFileManager() {
+        // for: 폴더를 정해주는 요소, in: 제한을 걸어주는 요소
+        let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        
+        // 파일을 저장할 Directory 설정
+        let directoryURL = documentURL.appendingPathComponent("NewDirectory")
+        
+        // 폴더 이름 추가해주기
+        do {
+            try fileManager.createDirectory(at: directoryURL, withIntermediateDirectories: false, attributes: nil)
+        } catch let e {
+            print(e)
+        }
+        
+        // 이미지가 저장된 경로
+        let imagePath = directoryURL.appendingPathComponent("test.png")
+        
+        // image 저장
+        if !fileManager.fileExists(atPath: imagePath.path) {
+            let data = UIImagePNGRepresentation(barcodeDatas[0])
+            fileManager.createFile(atPath: imagePath.path, contents: data, attributes: nil)
+        }
+        
+        if let imageData = try? Data(contentsOf: imagePath) {
+            if let image = UIImage(data: imageData) {
+                print(image)
+            }
+        }
+    }
+    
     
     // MARK: - Private Variable
     private let label = UILabel()
