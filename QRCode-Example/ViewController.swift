@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var loadingPer: UILabel!
     @IBOutlet weak var fetchButton: UIButton!
     @IBOutlet weak var loadingLabel: UILabel!
+    @IBOutlet weak var loadImageLabel: UILabel!
     
     // MARK: -IBAction Function
     @IBAction func fetchButton(_ sender: Any) {
@@ -133,8 +134,11 @@ class ViewController: UIViewController {
                 image = nil
                 photo = nil
             }
-            
             loading += 1
+        }
+        
+        DispatchQueue.main.async { [self] in
+            loadImageLabel.text = "불러온 이미지는 \(barcodeDatas.count) 개 입니다."
         }
     }
     
@@ -177,6 +181,7 @@ class ViewController: UIViewController {
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print(barcodeDatas.count)
+        
         return barcodeDatas.count
     }
     
@@ -186,7 +191,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
         cell.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         cell.image.image = barcodeDatas[indexPath.row]
         cell.image.contentMode = .scaleAspectFill
-        cell.image.frame = CGRect(x: 0, y: 0, width: collectionView.frame.width / 3 - 1, height: collectionView.frame.width / 3 - 1)
+        cell.image.frame = CGRect(x: 0, y: 0, width: collectionView.frame.width / 3 - 10, height: collectionView.frame.width / 3 - 10)
         
         return cell
     }
@@ -208,18 +213,18 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     
     // 위 아래 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 10
     }
     
     // 옆 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 10
     }
     
     // cell 사이즈( 옆 라인을 고려하여 설정 )
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let width = collectionView.frame.width / 3 - 1 ///  3등분하여 배치, 옆 간격이 1이므로 1을 빼줌
+        let width = collectionView.frame.width / 3 - 10 ///  3등분하여 배치, 옆 간격이 1이므로 1을 빼줌
         let size = CGSize(width: width, height: width)
         return size
     }

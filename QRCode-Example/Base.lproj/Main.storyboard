@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -23,9 +23,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kqL-N9-fPs">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="114" width="414" height="748"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WT7-ct-9NB">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WT7-ct-9NB">
                                     <size key="itemSize" width="411" height="819"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -82,12 +82,18 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUp-NV-a89">
-                                <rect key="frame" x="157" y="537" width="100" height="25"/>
+                                <rect key="frame" x="157" y="535.66666666666663" width="100" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="3KJ-WD-4vT"/>
                                     <constraint firstAttribute="width" constant="100" id="FNa-Vi-wfp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="불러온 이미지는 0 개 입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUv-Fa-XU7">
+                                <rect key="frame" x="20" y="64" width="194.33333333333334" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -99,16 +105,19 @@
                             <constraint firstItem="4FJ-gN-GVu" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-10" id="EH5-zI-KEy"/>
                             <constraint firstItem="cMP-Fx-10k" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="30" id="FU3-sY-y2W"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="kqL-N9-fPs" secondAttribute="bottom" id="IGl-PA-u1V"/>
+                            <constraint firstItem="fUp-NV-a89" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="100" id="Myh-uo-LF7"/>
                             <constraint firstItem="fUp-NV-a89" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ODJ-8v-jM8"/>
                             <constraint firstItem="4FJ-gN-GVu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Qou-EV-AOi"/>
-                            <constraint firstItem="kqL-N9-fPs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="W8q-vf-Itp"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fUp-NV-a89" secondAttribute="bottom" constant="300" id="tKJ-OO-z6V"/>
+                            <constraint firstItem="gUv-Fa-XU7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="Vhs-3i-eeM"/>
+                            <constraint firstItem="kqL-N9-fPs" firstAttribute="top" secondItem="gUv-Fa-XU7" secondAttribute="top" constant="50" id="g9B-ha-ru6"/>
+                            <constraint firstItem="gUv-Fa-XU7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="hgU-L1-XBt"/>
                             <constraint firstItem="cMP-Fx-10k" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wws-Zv-bk6"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="kqL-N9-fPs" id="Kw9-Uo-3sx"/>
                         <outlet property="fetchButton" destination="cMP-Fx-10k" id="3C5-yx-1ep"/>
+                        <outlet property="loadImageLabel" destination="gUv-Fa-XU7" id="XF8-YE-dWT"/>
                         <outlet property="loadingLabel" destination="4FJ-gN-GVu" id="9An-vl-HES"/>
                         <outlet property="loadingPer" destination="fUp-NV-a89" id="eMe-dw-dUH"/>
                     </connections>
@@ -183,9 +192,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="chevron.backward" catalog="system" width="96" height="128"/>
-        <image name="square.grid.3x1.folder.badge.plus" catalog="system" width="128" height="91"/>
-        <image name="trash" catalog="system" width="121" height="128"/>
+        <image name="chevron.backward" catalog="system" width="32" height="32"/>
+        <image name="square.grid.3x1.folder.badge.plus" catalog="system" width="32" height="32"/>
+        <image name="trash" catalog="system" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

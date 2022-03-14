@@ -39,6 +39,8 @@
 		79A4F53643CD73B9E885E105 /* Pods-QRCode-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCode-Example.debug.xcconfig"; path = "Target Support Files/Pods-QRCode-Example/Pods-QRCode-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A7A68A2D5F6249A8507C52BE /* Pods_QRCode_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRCode_ExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B781EAB1271C7CB2009A91FC /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B78EFC5127DEBFA700143A25 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B78EFC5527DEBFC500143A25 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7C9B4752704C3610011BA12 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B7D3FD2B26FE354C00E1C614 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		B7D3FD2D26FE3E4C00E1C614 /* CSCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -91,6 +93,8 @@
 		8D7703300F44C61B1D5B34FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B78EFC5527DEBFC500143A25 /* Lottie.framework */,
+				B78EFC5127DEBFA700143A25 /* Lottie.framework */,
 				B781EAB1271C7CB2009A91FC /* Lottie.framework */,
 				7147CB83110657575FE7165F /* Pods_QRCode_Example.framework */,
 				A7A68A2D5F6249A8507C52BE /* Pods_QRCode_ExampleTests.framework */,
