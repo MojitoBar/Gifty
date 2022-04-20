@@ -13,6 +13,7 @@
 		B781EAB5271C7E92009A91FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB0D9F251EEAED7D00F7D533 /* Main.storyboard */; };
 		B781EAB6271C7E94009A91FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB0D9F281EEAED7D00F7D533 /* Assets.xcassets */; };
 		B781EAB7271C7E97009A91FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB0D9F2A1EEAED7D00F7D533 /* LaunchScreen.storyboard */; };
+		B79F75B3280FCF4B000034E5 /* Extension+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79F75B2280FCF4B000034E5 /* Extension+ViewController.swift */; };
 		B7C9B4762704C3610011BA12 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C9B4752704C3610011BA12 /* DetailViewController.swift */; };
 		B7D3FD2C26FE354C00E1C614 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D3FD2B26FE354C00E1C614 /* ImageManager.swift */; };
 		B7D3FD2E26FE3E4C00E1C614 /* CSCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D3FD2D26FE3E4C00E1C614 /* CSCollectionViewCell.swift */; };
@@ -41,6 +42,7 @@
 		B781EAB1271C7CB2009A91FC /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B78EFC5127DEBFA700143A25 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B78EFC5527DEBFC500143A25 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B79F75B2280FCF4B000034E5 /* Extension+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+ViewController.swift"; sourceTree = "<group>"; };
 		B7C9B4752704C3610011BA12 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B7D3FD2B26FE354C00E1C614 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		B7D3FD2D26FE3E4C00E1C614 /* CSCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				B7D3FD2B26FE354C00E1C614 /* ImageManager.swift */,
 				B7D3FD2D26FE3E4C00E1C614 /* CSCollectionViewCell.swift */,
 				B7C9B4752704C3610011BA12 /* DetailViewController.swift */,
+				B79F75B2280FCF4B000034E5 /* Extension+ViewController.swift */,
 			);
 			path = "QRCode-Example";
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B79F75B3280FCF4B000034E5 /* Extension+ViewController.swift in Sources */,
 				093ED9EA1F9916820013937C /* VideoPreviewView.swift in Sources */,
 				DB0D9F241EEAED7C00F7D533 /* ViewController.swift in Sources */,
 				DB0D9F221EEAED7C00F7D533 /* AppDelegate.swift in Sources */,
@@ -516,7 +520,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = X843D4L2C2;
 				INFOPLIST_FILE = "QRCode-ExampleTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.hsos.QRCode-ExampleTests";
@@ -533,7 +537,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = X843D4L2C2;
 				INFOPLIST_FILE = "QRCode-ExampleTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.hsos.QRCode-ExampleTests";
