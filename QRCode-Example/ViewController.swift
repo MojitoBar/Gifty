@@ -32,38 +32,6 @@ class ViewController: UIViewController {
             fetchButton.isHidden = true
             loadingLabel.isHidden = true
             
-            // global 쓰레드 생성
-            DispatchQueue.global(qos: .userInitiated).async { [self] in
-                barcodeDatas = []
-                
-                // UI변화는 main thread 에서
-                DispatchQueue.main.async { [self] in
-                    collectionView.reloadData()
-                }
-                setPhotoLibraryImage()
-                
-                // UI변화는 main thread 에서
-                DispatchQueue.main.async { [self] in
-                    collectionView.reloadData()
-                    activityIndicator.stopAnimating()
-                    loadingPer.isHidden = true
-                }
-                isLoading = false
-            }
-        }
-    }
-    
-    @IBAction func fetchButton(_ sender: Any) {
-        isLoading = true
-        // 애니메이션 시작
-        activityIndicator.startAnimating()
-        // UI변화
-        loadingPer.isHidden = false
-        fetchButton.isHidden = true
-        loadingLabel.isHidden = true
-        
-        // global 쓰레드 생성
-        DispatchQueue.global(qos: .userInitiated).async { [self] in
             barcodeDatas = []
             
             // UI변화는 main thread 에서
@@ -81,6 +49,14 @@ class ViewController: UIViewController {
             isLoading = false
             
             setFileManager()
+        }
+    }
+    
+    @IBAction func fetchButton(_ sender: Any) {
+        collectionView.reloadData()
+        
+        DispatchQueue.global().sync { [self] in
+            setPhotoLibraryImage()
         }
     }
     
@@ -111,8 +87,11 @@ class ViewController: UIViewController {
         
         // image 저장
         if !fileManager.fileExists(atPath: imagePath.path) {
-            let data = UIImagePNGRepresentation(barcodeDatas[0])
-            fileManager.createFile(atPath: imagePath.path, contents: data, attributes: nil)
+            // 바코드 이미지가 1개 이상 있으면
+            if !barcodeDatas.isEmpty {
+                let data = UIImagePNGRepresentation(barcodeDatas[0])
+                fileManager.createFile(atPath: imagePath.path, contents: data, attributes: nil)
+            }
         }
         
         if let imageData = try? Data(contentsOf: imagePath) {
@@ -124,13 +103,13 @@ class ViewController: UIViewController {
     
     
     // MARK: - Private Variable
-    private let label = UILabel()
-    private var barcodeDatas: [UIImage] = []
-    private var loading = 0
-    private var isLoading = false
+    public let label = UILabel()
+    public var barcodeDatas: [UIImage] = []
+    public var loading = 0
+    public var isLoading = false
     
     // MARK: - 이미지 스캔
-    private func scanImage(data: Data, photo: PHAsset) {
+    func scanImage(data: Data, photo: PHAsset) {
         let barcodeRequest = VNDetectBarcodesRequest(completionHandler: { [self] request, error in
             self.reportResults(results: request.results, data: data, photo: photo)
             
@@ -143,7 +122,7 @@ class ViewController: UIViewController {
     }
     
     // MARK: - 스캔 결과
-    private func reportResults(results: [Any]?, data: Data, photo: PHAsset) {
+    func reportResults(results: [Any]?, data: Data, photo: PHAsset) {
         var check = false
         // Loop through the found results
         guard let results = results else {
@@ -184,36 +163,21 @@ class ViewController: UIViewController {
         }
     }
     
-    // MARK: - 사진 앱에서 이미지 가져오기
-    private func setPhotoLibraryImage() {
-        let fetchOption = PHFetchOptions()
-        fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        fetchPhotos = PHAsset.fetchAssets(with: fetchOption)
-        
-        for i in 0 ..< fetchPhotos!.count {
-            DispatchQueue.main.async { [self] in
-                // 3
-                setText()
-            }
-            autoreleasepool {
-                var photo: PHAsset? = fetchPhotos!.object(at: i)
-                var image: UIImage? = getAssetThumbnail(asset: photo!)
-                if let image = image{
-                    let data = UIImagePNGRepresentation(image)
-                    if let data = data{
-                        scanImage(data: data, photo: photo!)
-                    }
-                }
-                image = nil
-                photo = nil
-            }
-            loading += 1
-        }
-    }
     
     // MARK: - Set Loading Text
-    private func setText(){
+    func setText(){
         loadingPer.text = String(format: "%.1f", (Double(loading) / Double(fetchPhotos!.count) * 100)) + "%"
+    }
+    
+    func endLoading() {
+        if loadingPer.text == "100.0%" {
+            collectionView.reloadData()
+            activityIndicator.stopAnimating()
+            loadingPer.isHidden = true
+            isLoading = false
+            
+            setFileManager()
+        }
     }
     
     // MARK: - Loading Animation Indicator
