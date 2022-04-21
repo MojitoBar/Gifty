@@ -10,10 +10,14 @@
 		093ED9EA1F9916820013937C /* VideoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093ED9E91F9916820013937C /* VideoPreviewView.swift */; };
 		3D23C9FDAA2DC99650AF74FB /* Pods_QRCode_ExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A68A2D5F6249A8507C52BE /* Pods_QRCode_ExampleTests.framework */; };
 		46ECE208680817D9A800F7FE /* Pods_QRCode_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7147CB83110657575FE7165F /* Pods_QRCode_Example.framework */; };
+		B772504D281047E8000B3084 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B772504B281047E8000B3084 /* Model.xcdatamodeld */; };
 		B781EAB5271C7E92009A91FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB0D9F251EEAED7D00F7D533 /* Main.storyboard */; };
 		B781EAB6271C7E94009A91FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB0D9F281EEAED7D00F7D533 /* Assets.xcassets */; };
 		B781EAB7271C7E97009A91FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB0D9F2A1EEAED7D00F7D533 /* LaunchScreen.storyboard */; };
 		B79F75B3280FCF4B000034E5 /* Extension+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79F75B2280FCF4B000034E5 /* Extension+ViewController.swift */; };
+		B7B808EE2810492E004E1F80 /* Extension+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B808ED2810492E004E1F80 /* Extension+CoreData.swift */; };
+		B7B808FD281052D1004E1F80 /* Contact+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B808FB281052D1004E1F80 /* Contact+CoreDataClass.swift */; };
+		B7B808FE281052D1004E1F80 /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B808FC281052D1004E1F80 /* Contact+CoreDataProperties.swift */; };
 		B7C9B4762704C3610011BA12 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C9B4752704C3610011BA12 /* DetailViewController.swift */; };
 		B7D3FD2C26FE354C00E1C614 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D3FD2B26FE354C00E1C614 /* ImageManager.swift */; };
 		B7D3FD2E26FE3E4C00E1C614 /* CSCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D3FD2D26FE3E4C00E1C614 /* CSCollectionViewCell.swift */; };
@@ -39,10 +43,14 @@
 		7147CB83110657575FE7165F /* Pods_QRCode_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRCode_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79A4F53643CD73B9E885E105 /* Pods-QRCode-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCode-Example.debug.xcconfig"; path = "Target Support Files/Pods-QRCode-Example/Pods-QRCode-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A7A68A2D5F6249A8507C52BE /* Pods_QRCode_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRCode_ExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B772504C281047E8000B3084 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		B781EAB1271C7CB2009A91FC /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B78EFC5127DEBFA700143A25 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B78EFC5527DEBFC500143A25 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B79F75B2280FCF4B000034E5 /* Extension+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+ViewController.swift"; sourceTree = "<group>"; };
+		B7B808ED2810492E004E1F80 /* Extension+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CoreData.swift"; sourceTree = "<group>"; };
+		B7B808FB281052D1004E1F80 /* Contact+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B7B808FC281052D1004E1F80 /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B7C9B4752704C3610011BA12 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B7D3FD2B26FE354C00E1C614 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		B7D3FD2D26FE3E4C00E1C614 /* CSCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -107,6 +115,8 @@
 		DB0D9F151EEAED7C00F7D533 = {
 			isa = PBXGroup;
 			children = (
+				B7B808FB281052D1004E1F80 /* Contact+CoreDataClass.swift */,
+				B7B808FC281052D1004E1F80 /* Contact+CoreDataProperties.swift */,
 				B7F0C30A271C805E00805F49 /* loading-animation.json */,
 				DB0D9F201EEAED7C00F7D533 /* QRCode-Example */,
 				DB0D9F351EEAED7D00F7D533 /* QRCode-ExampleTests */,
@@ -139,6 +149,8 @@
 				B7D3FD2D26FE3E4C00E1C614 /* CSCollectionViewCell.swift */,
 				B7C9B4752704C3610011BA12 /* DetailViewController.swift */,
 				B79F75B2280FCF4B000034E5 /* Extension+ViewController.swift */,
+				B7B808ED2810492E004E1F80 /* Extension+CoreData.swift */,
+				B772504B281047E8000B3084 /* Model.xcdatamodeld */,
 			);
 			path = "QRCode-Example";
 			sourceTree = "<group>";
@@ -200,7 +212,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1330;
 				ORGANIZATIONNAME = "Hans Knoechel";
 				TargetAttributes = {
 					DB0D9F1D1EEAED7C00F7D533 = {
@@ -326,10 +338,14 @@
 				B79F75B3280FCF4B000034E5 /* Extension+ViewController.swift in Sources */,
 				093ED9EA1F9916820013937C /* VideoPreviewView.swift in Sources */,
 				DB0D9F241EEAED7C00F7D533 /* ViewController.swift in Sources */,
+				B772504D281047E8000B3084 /* Model.xcdatamodeld in Sources */,
+				B7B808FD281052D1004E1F80 /* Contact+CoreDataClass.swift in Sources */,
 				DB0D9F221EEAED7C00F7D533 /* AppDelegate.swift in Sources */,
+				B7B808FE281052D1004E1F80 /* Contact+CoreDataProperties.swift in Sources */,
 				B7C9B4762704C3610011BA12 /* DetailViewController.swift in Sources */,
 				B7D3FD2E26FE3E4C00E1C614 /* CSCollectionViewCell.swift in Sources */,
 				B7D3FD2C26FE354C00E1C614 /* ImageManager.swift in Sources */,
+				B7B808EE2810492E004E1F80 /* Extension+CoreData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,13 +401,18 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -418,7 +439,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -441,13 +462,18 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -468,7 +494,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -579,6 +605,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B772504B281047E8000B3084 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B772504C281047E8000B3084 /* Model.xcdatamodel */,
+			);
+			currentVersion = B772504C281047E8000B3084 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DB0D9F161EEAED7C00F7D533 /* Project object */;
 }

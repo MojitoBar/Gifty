@@ -9,6 +9,7 @@ import AVKit
 import UIKit
 import Vision
 import Photos
+import CoreData
 
 class ViewController: UIViewController {
     // MARK: - IBOutlet Variable
@@ -47,8 +48,6 @@ class ViewController: UIViewController {
                 loadingPer.isHidden = true
             }
             isLoading = false
-            
-            setFileManager()
         }
     }
     
@@ -66,38 +65,35 @@ class ViewController: UIViewController {
     public var index: Int?
     public let fileManager = FileManager.default
     
-    /// https://memohg.tistory.com/119
-    /// 이미지 로컬에 저장하고 불러오는 기능
-    func setFileManager() {
-        // for: 폴더를 정해주는 요소, in: 제한을 걸어주는 요소
-        let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        
-        // 파일을 저장할 Directory 설정
-        let directoryURL = documentURL.appendingPathComponent("NewDirectory")
-        
-        // 폴더 이름 추가해주기
+    // MARK: - Save to CoreData
+    func saveImageToLocal(image: UIImage) {
+        DispatchQueue.main.sync {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            
+            let photo = NSEntityDescription.insertNewObject(forEntityName: "Contact", into: context)
+            let png = UIImageJPEGRepresentation(image, 1.0)
+            photo.setValue(png, forKey: "image")
+            
+            do {
+                try context.save()
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    // MARK: - Fetch to CoreData
+    func fetchContact() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
         do {
-            try fileManager.createDirectory(at: directoryURL, withIntermediateDirectories: false, attributes: nil)
-        } catch let e {
-            print(e)
-        }
-        
-        // 이미지가 저장된 경로
-        let imagePath = directoryURL.appendingPathComponent("test.png")
-        
-        // image 저장
-        if !fileManager.fileExists(atPath: imagePath.path) {
-            // 바코드 이미지가 1개 이상 있으면
-            if !barcodeDatas.isEmpty {
-                let data = UIImagePNGRepresentation(barcodeDatas[0])
-                fileManager.createFile(atPath: imagePath.path, contents: data, attributes: nil)
+            let contact = try context.fetch(Contact.fetchRequest())
+            if let photo = contact.last {
+                print(UIImage(data: photo.image!)!)
             }
-        }
-        
-        if let imageData = try? Data(contentsOf: imagePath) {
-            if let image = UIImage(data: imageData) {
-                print(image)
-            }
+        } catch {
+            print(error.localizedDescription)
         }
     }
     
@@ -160,6 +156,7 @@ class ViewController: UIViewController {
             print("바코드 확인")
             barcodeDatas.append(UIImage(data: data)!)
             self.results.append(photo)
+            // saveImageToLocal(image: UIImage(data: data)!)
         }
     }
     
@@ -169,14 +166,12 @@ class ViewController: UIViewController {
         loadingPer.text = String(format: "%.1f", (Double(loading) / Double(fetchPhotos!.count) * 100)) + "%"
     }
     
-    func endLoading() {
-        if loadingPer.text == "100.0%" {
+    func endLoading(count: Int, photos: Int) {
+        if count >= photos {
             collectionView.reloadData()
             activityIndicator.stopAnimating()
             loadingPer.isHidden = true
             isLoading = false
-            
-            setFileManager()
         }
     }
     
@@ -304,8 +299,10 @@ extension ViewController {
             barcodeDatas.remove(at: index)
             results.remove(at: index)
         }
-        collectionView.reloadData()
         label.isHidden = true
+        
+        fetchContact()
+        collectionView.reloadData()
     }
 }
 

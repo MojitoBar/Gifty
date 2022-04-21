@@ -36,11 +36,13 @@ extension ViewController {
         for i in 0..<3 {
             DispatchQueue.global().async { [self] in
                 for j in indexArr[i]..<indexArr[i + 1] {
+                    loading += 1
                     DispatchQueue.main.async { [self] in
                         // 3
                         setText()
                         collectionView.reloadData()
-                        endLoading()
+                        print(loading)
+                        endLoading(count: loading, photos: fetchPhotos!.count)
                     }
                     autoreleasepool {
                         var photo: PHAsset? = fetchPhotos!.object(at: j)
@@ -54,7 +56,6 @@ extension ViewController {
                         image = nil
                         photo = nil
                     }
-                    loading += 1
                 }
             }
         }
