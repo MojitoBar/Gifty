@@ -25,7 +25,9 @@
 	<key>NSCameraUsageDescription</key>
 	<string>capture photos to scan for barcodes</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>true</string>
+	<string>&quot;GIFTY&quot;가 사진을 불러와 기프티콘 이미지를 찾는 기능을 사용하기 위해 사진 라이브러리에 접근하도록 허용합니다.
+사진에 대한 어떠한 데이터도 수집하지 않습니다. 
+접근을 허용하지 않으면, 사진을 검사할 수 없습니다.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
