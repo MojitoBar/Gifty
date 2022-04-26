@@ -12,11 +12,11 @@
 
 <a href="https://apps.apple.com/kr/app/gifty/id1592949834"><img src="https://user-images.githubusercontent.com/28949235/146959188-28042fcf-2bd5-4ab2-a0d5-9d47d1b9a7ca.png" width=200></a>
 <div>
-  <img style="width: 180px;" src="https://user-images.githubusercontent.com/16567811/165349708-41b006f8-353f-4bcd-a6f9-af3605409f65.png" alt="Gifty-1"/>
-  <img style="width: 180px;" src="https://user-images.githubusercontent.com/16567811/165350009-926759ec-1a32-4944-949b-59d01adae1db.png" alt="Gifty-2"/>
-  <img style="width: 180px;" src="https://user-images.githubusercontent.com/16567811/165350017-ea0a9436-c6b1-4457-bca0-636b0e02c917.png" alt="Gifty-3"/>
-  <img style="width: 180px;" src="https://user-images.githubusercontent.com/16567811/165350021-fc8060fa-ee56-4ff6-92eb-0bacec03f899.png" alt="Gifty-4"/>
-  <img style="width: 180px;" src="https://user-images.githubusercontent.com/16567811/165350034-006770d5-63a7-44a9-88e6-233d86a4e0a6.png" alt="Gifty-5"/>
+  <img style="width: 160px;" src="https://user-images.githubusercontent.com/16567811/165349708-41b006f8-353f-4bcd-a6f9-af3605409f65.png" alt="Gifty-1"/>
+  <img style="width: 160px;" src="https://user-images.githubusercontent.com/16567811/165350009-926759ec-1a32-4944-949b-59d01adae1db.png" alt="Gifty-2"/>
+  <img style="width: 160px;" src="https://user-images.githubusercontent.com/16567811/165350017-ea0a9436-c6b1-4457-bca0-636b0e02c917.png" alt="Gifty-3"/>
+  <img style="width: 160px;" src="https://user-images.githubusercontent.com/16567811/165350021-fc8060fa-ee56-4ff6-92eb-0bacec03f899.png" alt="Gifty-4"/>
+  <img style="width: 160px;" src="https://user-images.githubusercontent.com/16567811/165350034-006770d5-63a7-44a9-88e6-233d86a4e0a6.png" alt="Gifty-5"/>
 </div>
 
 ## Feature
