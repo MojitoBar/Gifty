@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import QRCode_Example
+@testable import Gifty
 
 class QRCode_ExampleTests: XCTestCase {
   
