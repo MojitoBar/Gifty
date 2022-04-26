@@ -29,32 +29,33 @@ extension ViewController {
             }
         }
         
-        // 10
-        // 0 3, 3 6, 6 10
-        let indexArr: [Int] = [0, fetchPhotos!.count / 3, fetchPhotos!.count / 3 * 2, fetchPhotos!.count]
+        // a ~ b
+        // a ~ a + ((b-a) / 3)
+        let indexArr: [Int] = [startIndex - 1,
+                               startIndex - 1 + (endIndex - (startIndex - 1)) / 3,
+                               startIndex - 1 + (endIndex - (startIndex - 1)) / 3 * 2,
+                               endIndex]
         
         for i in 0..<3 {
             DispatchQueue.global().async { [self] in
                 for j in indexArr[i]..<indexArr[i + 1] {
                     loading += 1
-                    DispatchQueue.main.async { [self] in
-                        // 3
-                        setText()
-                        collectionView.reloadData()
-                        print(loading)
-                        endLoading(count: loading, photos: fetchPhotos!.count)
-                    }
                     autoreleasepool {
-                        var photo: PHAsset? = fetchPhotos!.object(at: j)
-                        var image: UIImage? = getAssetThumbnail(asset: photo!)
+                        let photo: PHAsset? = fetchPhotos!.object(at: j)
+                        let image: UIImage? = getAssetThumbnail(asset: photo!)
                         if let image = image{
                             let data = UIImagePNGRepresentation(image)
                             if let data = data{
                                 scanImage(data: data, photo: photo!)
                             }
                         }
-                        image = nil
-                        photo = nil
+                    }
+                    
+                    DispatchQueue.main.async { [self] in
+                        // 3
+                        setText()
+                        collectionView.reloadData()
+                        endLoading(count: loading, photos: endIndex - startIndex)
                     }
                 }
             }

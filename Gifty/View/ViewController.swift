@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     
     // MARK: -IBAction Function
     @IBAction func reloadBtn(_ sender: Any) {
-        if !isLoading {
+        if !isLoading && checkRange(start: startIndex, end: endIndex) {
             isLoading = true
             // loading 초기화
             loading = 0
@@ -52,18 +52,12 @@ class ViewController: UIViewController {
     }
     
     @IBAction func fetchButton(_ sender: Any) {
-        collectionView.reloadData()
-        
-        DispatchQueue.global().sync { [self] in
-            setPhotoLibraryImage()
+        if checkRange(start: startIndex, end: endIndex) {
+            DispatchQueue.global().sync { [self] in
+                setPhotoLibraryImage()
+            }
         }
     }
-    
-    // 범위 지정 뷰 띄우기
-    @IBAction func optionButton(_ sender: Any) {
-        
-    }
-    
     
     // MARK: - Public Variable
     public var results: [PHAsset] = []
@@ -109,6 +103,8 @@ class ViewController: UIViewController {
     public var barcodeDatas: [UIImage] = []
     public var loading = 0
     public var isLoading = false
+    public var startIndex = 0
+    public var endIndex = 0
     
     // MARK: - Loading Animation Indicator
     lazy var activityIndicator: UIActivityIndicatorView = {
@@ -184,7 +180,7 @@ class ViewController: UIViewController {
     
     // MARK: - Set Loading Text
     func setText(){
-        loadingPer.text = String(format: "%.1f", (Double(loading) / Double(fetchPhotos!.count) * 100)) + "%"
+        loadingPer.text = String(format: "%.1f", (Double(loading) / Double(endIndex - startIndex) * 100)) + "%"
     }
     
     func endLoading(count: Int, photos: Int) {
@@ -209,6 +205,25 @@ class ViewController: UIViewController {
             }
         })
         return thumbnail
+    }
+    
+    // MARK: - 유효한 범위인지 체크
+    func checkRange(start: Int, end: Int) -> Bool {
+        let fetchOption = PHFetchOptions()
+        fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        fetchPhotos = PHAsset.fetchAssets(with: fetchOption)
+        
+        if start < 1 || end < 1 || start > end || start > fetchPhotos!.count || end > fetchPhotos!.count {
+            // 경고문구 띄우기
+            let alert = UIAlertController(title: "범위가 올바르지 않습니다.", message: "스캔할 사진의 범위를 정확히 지정해 주세요.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(.init(title: "확인", style: .default))
+            present(alert, animated: true, completion: nil)
+            return false
+        }
+        else {
+            print("유효함")
+            return true
+        }
     }
 }
 // MARK: - ViewController Life Cycle
@@ -244,6 +259,12 @@ extension ViewController {
         @unknown default:
             fatalError()
         }
+        
+        let fetchOption = PHFetchOptions()
+        fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        fetchPhotos = PHAsset.fetchAssets(with: fetchOption)
+        startIndex = 1
+        endIndex = fetchPhotos!.count
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -259,9 +280,23 @@ extension ViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         segue.destination.preferredContentSize = CGSize(width: 300, height: 150)
-        if let presentationController = segue.destination.popoverPresentationController {
-            presentationController.delegate = self
-        }
+        
+        guard let option = segue.destination as? OptionViewController else { return }
+        option.popoverPresentationController?.delegate = self
+        let fetchOption = PHFetchOptions()
+        fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        fetchPhotos = PHAsset.fetchAssets(with: fetchOption)
+        
+        option.imgCount = fetchPhotos!.count
+        option.startCount = startIndex
+        option.endCount = endIndex
+    }
+    
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        guard let option = presentationController.presentedViewController as? OptionViewController else { return }
+        
+        startIndex = Int(option.startTextField.text!)!
+        endIndex = Int(option.endTextField.text!)!
     }
 }
 
