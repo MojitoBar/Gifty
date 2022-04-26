@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var loadingLabel: UILabel!
     @IBOutlet weak var loadImageLabel: UILabel!
     @IBOutlet weak var reloadBtn: UIButton!
+    @IBOutlet weak var optionBtn: UIButton!
     
     // MARK: -IBAction Function
     @IBAction func reloadBtn(_ sender: Any) {
@@ -57,6 +58,12 @@ class ViewController: UIViewController {
             setPhotoLibraryImage()
         }
     }
+    
+    // 범위 지정 뷰 띄우기
+    @IBAction func optionButton(_ sender: Any) {
+        
+    }
+    
     
     // MARK: - Public Variable
     public var results: [PHAsset] = []
@@ -210,6 +217,7 @@ extension ViewController {
         super.viewDidLoad()
         self.view.addSubview(self.activityIndicator)
         reloadBtn.setTitle("", for: .normal)
+        optionBtn.setTitle("", for: .normal)
         
         loadingPer.text = "0"
         
@@ -247,5 +255,18 @@ extension ViewController {
         
         fetchContact()
         collectionView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segue.destination.preferredContentSize = CGSize(width: 300, height: 150)
+        if let presentationController = segue.destination.popoverPresentationController {
+            presentationController.delegate = self
+        }
+    }
+}
+
+extension ViewController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
 }
