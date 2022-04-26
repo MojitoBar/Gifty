@@ -1,9 +1,10 @@
-# Find gifticon from your photos with Vision
+# Gifty
 
-- IDE: Xcode
-- Language: Swift
-- Interface: StoryBoard
-=======
-# Find gifticon with Vision
 
-...gif
+
+> Gifty - 갤러리의 숨은 기프티콘 <br>
+> 갤러리에서 기프티콘 이미지만 뽑아 쉽게 관리할 수 있게 한 어플리케이션 입니다.
+>
+> RELEASE: 2022.04.21
+
+
