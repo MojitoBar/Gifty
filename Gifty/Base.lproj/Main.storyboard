@@ -123,7 +123,6 @@
                                 </state>
                                 <buttonConfiguration key="configuration" style="plain" image="gearshape" catalog="system" title=""/>
                                 <connections>
-                                    <action selector="optionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9zF-pd-vLV"/>
                                     <segue destination="gO1-FY-2QL" kind="popoverPresentation" popoverAnchorView="sBy-lh-KoF" id="kCb-E2-4oO">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
@@ -231,7 +230,7 @@
         <!--Option View Controller-->
         <scene sceneID="1fE-lJ-WKn">
             <objects>
-                <viewController id="gO1-FY-2QL" customClass="OptionViewController" customModule="Gifty" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="option" id="gO1-FY-2QL" customClass="OptionViewController" customModule="Gifty" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Mq9-fU-71t"/>
                         <viewControllerLayoutGuide type="bottom" id="du5-dg-Mtq"/>
@@ -276,14 +275,22 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="스캔할 이미지의 범위를 지정해주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrl-if-qwY">
+                                <rect key="frame" x="62.333333333333329" y="99" width="205.33333333333337" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="wrl-if-qwY" firstAttribute="top" secondItem="Mq9-fU-71t" secondAttribute="bottom" constant="55" id="2OG-aE-NKX"/>
                             <constraint firstItem="pCp-Z3-zVo" firstAttribute="top" secondItem="Mq9-fU-71t" secondAttribute="bottom" constant="90" id="3tf-G1-UEP"/>
                             <constraint firstAttribute="trailing" secondItem="j6L-Jf-eYP" secondAttribute="trailing" constant="20" id="9ox-8F-b1F"/>
                             <constraint firstItem="pCp-Z3-zVo" firstAttribute="leading" secondItem="1nU-8o-gvS" secondAttribute="leading" constant="20" symbolic="YES" id="NAe-vi-xN3"/>
                             <constraint firstItem="pvX-pL-vE0" firstAttribute="top" secondItem="Mq9-fU-71t" secondAttribute="bottom" constant="98" id="V97-dw-GLx"/>
                             <constraint firstItem="j6L-Jf-eYP" firstAttribute="top" secondItem="Mq9-fU-71t" secondAttribute="bottom" constant="98" id="WfL-Th-OwG"/>
+                            <constraint firstItem="wrl-if-qwY" firstAttribute="centerX" secondItem="1nU-8o-gvS" secondAttribute="centerX" id="ccc-zQ-7YD"/>
                             <constraint firstItem="mCK-vj-EfT" firstAttribute="centerX" secondItem="1nU-8o-gvS" secondAttribute="centerX" id="eBe-AG-9Oi"/>
                             <constraint firstAttribute="trailing" secondItem="a3B-B2-Slk" secondAttribute="trailing" constant="75" id="lss-ji-I75"/>
                             <constraint firstItem="pvX-pL-vE0" firstAttribute="trailing" secondItem="pCp-Z3-zVo" secondAttribute="trailing" constant="50" id="vMi-H0-QRW"/>
@@ -292,6 +299,11 @@
                         </constraints>
                     </view>
                     <size key="freeformSize" width="330" height="200"/>
+                    <connections>
+                        <outlet property="endTextField" destination="a3B-B2-Slk" id="VYr-Db-yRa"/>
+                        <outlet property="infoLabel" destination="mCK-vj-EfT" id="6wR-AS-dxr"/>
+                        <outlet property="startTextField" destination="pCp-Z3-zVo" id="cIA-rb-6Kk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="41n-xa-wPi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
