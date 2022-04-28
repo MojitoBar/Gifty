@@ -43,6 +43,7 @@
 		79A4F53643CD73B9E885E105 /* Pods-QRCode-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCode-Example.debug.xcconfig"; path = "Target Support Files/Pods-QRCode-Example/Pods-QRCode-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A7A68A2D5F6249A8507C52BE /* Pods_QRCode_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRCode_ExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B718B94B28180E07002919A6 /* ViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+CollectionView.swift"; sourceTree = "<group>"; };
+		B74F3D5F2818C9C500B71A41 /* Gifty.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Gifty.entitlements; sourceTree = "<group>"; };
 		B75DB11F28181A5100589C4B /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
 		B772504C281047E8000B3084 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		B781EAB1271C7CB2009A91FC /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +181,7 @@
 		DB0D9F201EEAED7C00F7D533 /* Gifty */ = {
 			isa = PBXGroup;
 			children = (
+				B74F3D5F2818C9C500B71A41 /* Gifty.entitlements */,
 				B718B94A28180DB3002919A6 /* Extension */,
 				B718B94928180D69002919A6 /* Util */,
 				B718B94828180D3A002919A6 /* Model */,
@@ -547,15 +549,17 @@
 			baseConfigurationReference = 79A4F53643CD73B9E885E105 /* Pods-QRCode-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Gifty/Gifty.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X843D4L2C2;
 				INFOPLIST_FILE = Gifty/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gifty.ji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -566,15 +570,17 @@
 			baseConfigurationReference = 642D1B7B04495EE0F4E02BD0 /* Pods-QRCode-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Gifty/Gifty.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X843D4L2C2;
 				INFOPLIST_FILE = Gifty/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gifty.ji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
