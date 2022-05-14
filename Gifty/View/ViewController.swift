@@ -207,6 +207,14 @@ class ViewController: UIViewController {
         return thumbnail
     }
     
+    // MARK: - 범위 예외처리 알림
+    func showAlert() {
+        // 경고문구 띄우기
+        let alert = UIAlertController(title: "범위가 올바르지 않습니다.", message: "스캔할 사진의 범위를 정확히 지정해 주세요.", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(.init(title: "확인", style: .default))
+        present(alert, animated: true, completion: nil)
+    }
+    
     // MARK: - 유효한 범위인지 체크
     func checkRange(start: Int, end: Int) -> Bool {
         let fetchOption = PHFetchOptions()
@@ -214,10 +222,8 @@ class ViewController: UIViewController {
         fetchPhotos = PHAsset.fetchAssets(with: fetchOption)
         
         if start < 1 || end < 1 || start > end || start > fetchPhotos!.count || end > fetchPhotos!.count {
-            // 경고문구 띄우기
-            let alert = UIAlertController(title: "범위가 올바르지 않습니다.", message: "스캔할 사진의 범위를 정확히 지정해 주세요.", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(.init(title: "확인", style: .default))
-            present(alert, animated: true, completion: nil)
+            showAlert()
+            
             return false
         }
         else {
@@ -295,8 +301,13 @@ extension ViewController {
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
         guard let option = presentationController.presentedViewController as? OptionViewController else { return }
         
-        startIndex = Int(option.startTextField.text!)!
-        endIndex = Int(option.endTextField.text!)!
+        if Int(option.startTextField.text!) != nil && Int(option.endTextField.text!) != nil {
+            startIndex = Int(option.startTextField.text!)!
+            endIndex = Int(option.endTextField.text!)!
+        }
+        else {
+            showAlert()
+        }
     }
 }
 
