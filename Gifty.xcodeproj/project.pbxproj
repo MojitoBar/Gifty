@@ -3,11 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		93A987498BF7A946D889C1C1 /* Pods_GiftyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44EC874B3FDF255E24746E9 /* Pods_GiftyTests.framework */; };
+		43912ECA2A81402A008E0FE5 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 43912EC92A81402A008E0FE5 /* Lottie */; };
 		B718B94C28180E07002919A6 /* ViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B718B94B28180E07002919A6 /* ViewController+CollectionView.swift */; };
 		B75DB12028181A5100589C4B /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75DB11F28181A5100589C4B /* OptionViewController.swift */; };
 		B772504D281047E8000B3084 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B772504B281047E8000B3084 /* Model.xcdatamodeld */; };
@@ -24,7 +24,6 @@
 		DB0D9F221EEAED7C00F7D533 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0D9F211EEAED7C00F7D533 /* AppDelegate.swift */; };
 		DB0D9F241EEAED7C00F7D533 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0D9F231EEAED7C00F7D533 /* ViewController.swift */; };
 		DB0D9F371EEAED7D00F7D533 /* GitfyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0D9F361EEAED7D00F7D533 /* GitfyTests.swift */; };
-		E0B01D3F8F3B169F4BC6B20D /* Pods_Gifty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 869AD6A7FC93FD101DC12EEE /* Pods_Gifty.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,20 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		09ED9DF8284BC1DEFCA43E9A /* Pods-Gifty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gifty.release.xcconfig"; path = "Target Support Files/Pods-Gifty/Pods-Gifty.release.xcconfig"; sourceTree = "<group>"; };
-		53CB0485CDCF7BC6CF7E09BD /* Pods-GiftyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GiftyTests.release.xcconfig"; path = "Target Support Files/Pods-GiftyTests/Pods-GiftyTests.release.xcconfig"; sourceTree = "<group>"; };
-		5E360846E858B373BD73E905 /* Pods-Gifty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gifty.debug.xcconfig"; path = "Target Support Files/Pods-Gifty/Pods-Gifty.debug.xcconfig"; sourceTree = "<group>"; };
-		642D1B7B04495EE0F4E02BD0 /* Pods-QRCode-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCode-Example.release.xcconfig"; path = "Target Support Files/Pods-QRCode-Example/Pods-QRCode-Example.release.xcconfig"; sourceTree = "<group>"; };
-		79A4F53643CD73B9E885E105 /* Pods-QRCode-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCode-Example.debug.xcconfig"; path = "Target Support Files/Pods-QRCode-Example/Pods-QRCode-Example.debug.xcconfig"; sourceTree = "<group>"; };
-		869AD6A7FC93FD101DC12EEE /* Pods_Gifty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gifty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A8DBBEFA15F2A775817B2845 /* Pods-GiftyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GiftyTests.debug.xcconfig"; path = "Target Support Files/Pods-GiftyTests/Pods-GiftyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B718B94B28180E07002919A6 /* ViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		B74F3D5F2818C9C500B71A41 /* Gifty.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Gifty.entitlements; sourceTree = "<group>"; };
 		B75DB11F28181A5100589C4B /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
 		B772504C281047E8000B3084 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		B781EAB1271C7CB2009A91FC /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B78EFC5127DEBFA700143A25 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B78EFC5527DEBFC500143A25 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B79F75B2280FCF4B000034E5 /* Extension+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+ViewController.swift"; sourceTree = "<group>"; };
 		B7B808FB281052D1004E1F80 /* Contact+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B7B808FC281052D1004E1F80 /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -69,9 +58,6 @@
 		DB0D9F321EEAED7D00F7D533 /* GiftyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GiftyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB0D9F361EEAED7D00F7D533 /* GitfyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitfyTests.swift; sourceTree = "<group>"; };
 		DB0D9F381EEAED7D00F7D533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E25605FDEDCE17EDE8A930FE /* Pods-QRCode-ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCode-ExampleTests.release.xcconfig"; path = "Target Support Files/Pods-QRCode-ExampleTests/Pods-QRCode-ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
-		E44EC874B3FDF255E24746E9 /* Pods_GiftyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GiftyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F50063C296B047026A4584B6 /* Pods-QRCode-ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCode-ExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-QRCode-ExampleTests/Pods-QRCode-ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0B01D3F8F3B169F4BC6B20D /* Pods_Gifty.framework in Frameworks */,
+				43912ECA2A81402A008E0FE5 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,40 +73,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93A987498BF7A946D889C1C1 /* Pods_GiftyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		507D848A5CC28CD145DEA583 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				79A4F53643CD73B9E885E105 /* Pods-QRCode-Example.debug.xcconfig */,
-				642D1B7B04495EE0F4E02BD0 /* Pods-QRCode-Example.release.xcconfig */,
-				F50063C296B047026A4584B6 /* Pods-QRCode-ExampleTests.debug.xcconfig */,
-				E25605FDEDCE17EDE8A930FE /* Pods-QRCode-ExampleTests.release.xcconfig */,
-				5E360846E858B373BD73E905 /* Pods-Gifty.debug.xcconfig */,
-				09ED9DF8284BC1DEFCA43E9A /* Pods-Gifty.release.xcconfig */,
-				A8DBBEFA15F2A775817B2845 /* Pods-GiftyTests.debug.xcconfig */,
-				53CB0485CDCF7BC6CF7E09BD /* Pods-GiftyTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		8D7703300F44C61B1D5B34FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B78EFC5527DEBFC500143A25 /* Lottie.framework */,
-				B78EFC5127DEBFA700143A25 /* Lottie.framework */,
-				B781EAB1271C7CB2009A91FC /* Lottie.framework */,
-				869AD6A7FC93FD101DC12EEE /* Pods_Gifty.framework */,
-				E44EC874B3FDF255E24746E9 /* Pods_GiftyTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		B718B94628180D07002919A6 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,8 +130,6 @@
 				DB0D9F201EEAED7C00F7D533 /* Gifty */,
 				DB0D9F351EEAED7D00F7D533 /* GiftyTests */,
 				DB0D9F1F1EEAED7C00F7D533 /* Products */,
-				507D848A5CC28CD145DEA583 /* Pods */,
-				8D7703300F44C61B1D5B34FC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -221,17 +177,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DB0D9F3B1EEAED7D00F7D533 /* Build configuration list for PBXNativeTarget "Gifty" */;
 			buildPhases = (
-				C9679F586DFA95C9C5E06CDB /* [CP] Check Pods Manifest.lock */,
 				DB0D9F1A1EEAED7C00F7D533 /* Sources */,
 				DB0D9F1B1EEAED7C00F7D533 /* Frameworks */,
 				DB0D9F1C1EEAED7C00F7D533 /* Resources */,
-				8DBB9E03B2C00AF7F205399E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Gifty;
+			packageProductDependencies = (
+				43912EC92A81402A008E0FE5 /* Lottie */,
+			);
 			productName = "QRCode-Example";
 			productReference = DB0D9F1E1EEAED7C00F7D533 /* Gifty.app */;
 			productType = "com.apple.product-type.application";
@@ -261,16 +218,19 @@
 		DB0D9F161EEAED7C00F7D533 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 1330;
+				LastUpgradeCheck = 1500;
 				ORGANIZATIONNAME = "Hans Knoechel";
 				TargetAttributes = {
 					DB0D9F1D1EEAED7C00F7D533 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = "";
 						ProvisioningStyle = Automatic;
 					};
 					DB0D9F311EEAED7D00F7D533 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = "";
 						TestTargetID = DB0D9F1D1EEAED7C00F7D533;
 					};
 				};
@@ -284,6 +244,9 @@
 				Base,
 			);
 			mainGroup = DB0D9F151EEAED7C00F7D533;
+			packageReferences = (
+				43912EC82A81402A008E0FE5 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = DB0D9F1F1EEAED7C00F7D533 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -316,46 +279,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8DBB9E03B2C00AF7F205399E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Gifty/Pods-Gifty-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Gifty/Pods-Gifty-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C9679F586DFA95C9C5E06CDB /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Gifty-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		F41074F572BEBD40A73D4C05 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -475,6 +398,7 @@
 				DEVELOPMENT_TEAM = DVN7WHGQ36;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -536,6 +460,7 @@
 				DEVELOPMENT_TEAM = DVN7WHGQ36;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -547,14 +472,14 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		DB0D9F3C1EEAED7D00F7D533 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5E360846E858B373BD73E905 /* Pods-Gifty.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Gifty/Gifty.entitlements;
@@ -562,7 +487,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X843D4L2C2;
 				INFOPLIST_FILE = Gifty/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gifty.ji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -575,7 +504,6 @@
 		};
 		DB0D9F3D1EEAED7D00F7D533 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 09ED9DF8284BC1DEFCA43E9A /* Pods-Gifty.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Gifty/Gifty.entitlements;
@@ -583,7 +511,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X843D4L2C2;
 				INFOPLIST_FILE = Gifty/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gifty.ji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -596,13 +528,16 @@
 		};
 		DB0D9F3F1EEAED7D00F7D533 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A8DBBEFA15F2A775817B2845 /* Pods-GiftyTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = X843D4L2C2;
 				INFOPLIST_FILE = "QRCode-ExampleTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "de.hsos.QRCode-ExampleTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -613,13 +548,16 @@
 		};
 		DB0D9F401EEAED7D00F7D533 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 53CB0485CDCF7BC6CF7E09BD /* Pods-GiftyTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = X843D4L2C2;
 				INFOPLIST_FILE = "QRCode-ExampleTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "de.hsos.QRCode-ExampleTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -659,6 +597,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		43912EC82A81402A008E0FE5 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		43912EC92A81402A008E0FE5 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 43912EC82A81402A008E0FE5 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		B772504B281047E8000B3084 /* Model.xcdatamodeld */ = {
