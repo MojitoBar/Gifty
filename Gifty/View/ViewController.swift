@@ -72,7 +72,7 @@ class ViewController: UIViewController {
             let context = appDelegate.persistentContainer.viewContext
             
             let photo = NSEntityDescription.insertNewObject(forEntityName: "Contact", into: context)
-            let png = UIImageJPEGRepresentation(image, 1.0)
+            let png = image.jpegData(compressionQuality: 1.0)
             photo.setValue(png, forKey: "image")
             
             do {
@@ -109,13 +109,12 @@ class ViewController: UIViewController {
     // MARK: - Loading Animation Indicator
     lazy var activityIndicator: UIActivityIndicatorView = {
         // Create an indicator.
-        let activityIndicator = UIActivityIndicatorView()
+        let activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         activityIndicator.center = self.view.center
         activityIndicator.color = UIColor.red
         // Also show the indicator even when the animation is stopped.
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorView.Style.white
         // Start animation.
         activityIndicator.stopAnimating()
         return activityIndicator

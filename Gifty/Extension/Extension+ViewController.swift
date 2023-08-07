@@ -44,7 +44,7 @@ extension ViewController {
                         let photo: PHAsset? = fetchPhotos!.object(at: j)
                         let image: UIImage? = getAssetThumbnail(asset: photo!)
                         if let image = image{
-                            let data = UIImagePNGRepresentation(image)
+                            let data = image.pngData()
                             if let data = data{
                                 scanImage(data: data, photo: photo!)
                             }
