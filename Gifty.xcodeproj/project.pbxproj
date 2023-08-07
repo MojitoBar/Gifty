@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D23C9FDAA2DC99650AF74FB /* Pods_QRCode_ExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A68A2D5F6249A8507C52BE /* Pods_QRCode_ExampleTests.framework */; };
-		46ECE208680817D9A800F7FE /* Pods_QRCode_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7147CB83110657575FE7165F /* Pods_QRCode_Example.framework */; };
+		93A987498BF7A946D889C1C1 /* Pods_GiftyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44EC874B3FDF255E24746E9 /* Pods_GiftyTests.framework */; };
 		B718B94C28180E07002919A6 /* ViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B718B94B28180E07002919A6 /* ViewController+CollectionView.swift */; };
 		B75DB12028181A5100589C4B /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75DB11F28181A5100589C4B /* OptionViewController.swift */; };
 		B772504D281047E8000B3084 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B772504B281047E8000B3084 /* Model.xcdatamodeld */; };
@@ -25,6 +24,7 @@
 		DB0D9F221EEAED7C00F7D533 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0D9F211EEAED7C00F7D533 /* AppDelegate.swift */; };
 		DB0D9F241EEAED7C00F7D533 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0D9F231EEAED7C00F7D533 /* ViewController.swift */; };
 		DB0D9F371EEAED7D00F7D533 /* GitfyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0D9F361EEAED7D00F7D533 /* GitfyTests.swift */; };
+		E0B01D3F8F3B169F4BC6B20D /* Pods_Gifty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 869AD6A7FC93FD101DC12EEE /* Pods_Gifty.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,10 +38,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09ED9DF8284BC1DEFCA43E9A /* Pods-Gifty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gifty.release.xcconfig"; path = "Target Support Files/Pods-Gifty/Pods-Gifty.release.xcconfig"; sourceTree = "<group>"; };
+		53CB0485CDCF7BC6CF7E09BD /* Pods-GiftyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GiftyTests.release.xcconfig"; path = "Target Support Files/Pods-GiftyTests/Pods-GiftyTests.release.xcconfig"; sourceTree = "<group>"; };
+		5E360846E858B373BD73E905 /* Pods-Gifty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gifty.debug.xcconfig"; path = "Target Support Files/Pods-Gifty/Pods-Gifty.debug.xcconfig"; sourceTree = "<group>"; };
 		642D1B7B04495EE0F4E02BD0 /* Pods-QRCode-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCode-Example.release.xcconfig"; path = "Target Support Files/Pods-QRCode-Example/Pods-QRCode-Example.release.xcconfig"; sourceTree = "<group>"; };
-		7147CB83110657575FE7165F /* Pods_QRCode_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRCode_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79A4F53643CD73B9E885E105 /* Pods-QRCode-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCode-Example.debug.xcconfig"; path = "Target Support Files/Pods-QRCode-Example/Pods-QRCode-Example.debug.xcconfig"; sourceTree = "<group>"; };
-		A7A68A2D5F6249A8507C52BE /* Pods_QRCode_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRCode_ExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		869AD6A7FC93FD101DC12EEE /* Pods_Gifty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gifty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8DBBEFA15F2A775817B2845 /* Pods-GiftyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GiftyTests.debug.xcconfig"; path = "Target Support Files/Pods-GiftyTests/Pods-GiftyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B718B94B28180E07002919A6 /* ViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		B74F3D5F2818C9C500B71A41 /* Gifty.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Gifty.entitlements; sourceTree = "<group>"; };
 		B75DB11F28181A5100589C4B /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +70,7 @@
 		DB0D9F361EEAED7D00F7D533 /* GitfyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitfyTests.swift; sourceTree = "<group>"; };
 		DB0D9F381EEAED7D00F7D533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E25605FDEDCE17EDE8A930FE /* Pods-QRCode-ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCode-ExampleTests.release.xcconfig"; path = "Target Support Files/Pods-QRCode-ExampleTests/Pods-QRCode-ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		E44EC874B3FDF255E24746E9 /* Pods_GiftyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GiftyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F50063C296B047026A4584B6 /* Pods-QRCode-ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCode-ExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-QRCode-ExampleTests/Pods-QRCode-ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,7 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46ECE208680817D9A800F7FE /* Pods_QRCode_Example.framework in Frameworks */,
+				E0B01D3F8F3B169F4BC6B20D /* Pods_Gifty.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,7 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D23C9FDAA2DC99650AF74FB /* Pods_QRCode_ExampleTests.framework in Frameworks */,
+				93A987498BF7A946D889C1C1 /* Pods_GiftyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +101,10 @@
 				642D1B7B04495EE0F4E02BD0 /* Pods-QRCode-Example.release.xcconfig */,
 				F50063C296B047026A4584B6 /* Pods-QRCode-ExampleTests.debug.xcconfig */,
 				E25605FDEDCE17EDE8A930FE /* Pods-QRCode-ExampleTests.release.xcconfig */,
+				5E360846E858B373BD73E905 /* Pods-Gifty.debug.xcconfig */,
+				09ED9DF8284BC1DEFCA43E9A /* Pods-Gifty.release.xcconfig */,
+				A8DBBEFA15F2A775817B2845 /* Pods-GiftyTests.debug.xcconfig */,
+				53CB0485CDCF7BC6CF7E09BD /* Pods-GiftyTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -107,8 +115,8 @@
 				B78EFC5527DEBFC500143A25 /* Lottie.framework */,
 				B78EFC5127DEBFA700143A25 /* Lottie.framework */,
 				B781EAB1271C7CB2009A91FC /* Lottie.framework */,
-				7147CB83110657575FE7165F /* Pods_QRCode_Example.framework */,
-				A7A68A2D5F6249A8507C52BE /* Pods_QRCode_ExampleTests.framework */,
+				869AD6A7FC93FD101DC12EEE /* Pods_Gifty.framework */,
+				E44EC874B3FDF255E24746E9 /* Pods_GiftyTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -314,7 +322,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-QRCode-Example/Pods-QRCode-Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Gifty/Pods-Gifty-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -323,7 +331,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QRCode-Example/Pods-QRCode-Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Gifty/Pods-Gifty-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C9679F586DFA95C9C5E06CDB /* [CP] Check Pods Manifest.lock */ = {
@@ -341,7 +349,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-QRCode-Example-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Gifty-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -363,7 +371,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-QRCode-ExampleTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-GiftyTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -546,7 +554,7 @@
 		};
 		DB0D9F3C1EEAED7D00F7D533 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79A4F53643CD73B9E885E105 /* Pods-QRCode-Example.debug.xcconfig */;
+			baseConfigurationReference = 5E360846E858B373BD73E905 /* Pods-Gifty.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Gifty/Gifty.entitlements;
@@ -567,7 +575,7 @@
 		};
 		DB0D9F3D1EEAED7D00F7D533 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 642D1B7B04495EE0F4E02BD0 /* Pods-QRCode-Example.release.xcconfig */;
+			baseConfigurationReference = 09ED9DF8284BC1DEFCA43E9A /* Pods-Gifty.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Gifty/Gifty.entitlements;
@@ -588,7 +596,7 @@
 		};
 		DB0D9F3F1EEAED7D00F7D533 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F50063C296B047026A4584B6 /* Pods-QRCode-ExampleTests.debug.xcconfig */;
+			baseConfigurationReference = A8DBBEFA15F2A775817B2845 /* Pods-GiftyTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -605,7 +613,7 @@
 		};
 		DB0D9F401EEAED7D00F7D533 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E25605FDEDCE17EDE8A930FE /* Pods-QRCode-ExampleTests.release.xcconfig */;
+			baseConfigurationReference = 53CB0485CDCF7BC6CF7E09BD /* Pods-GiftyTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
