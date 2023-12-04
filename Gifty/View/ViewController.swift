@@ -19,35 +19,37 @@ class ViewController: UIViewController {
     @IBOutlet weak var loadImageLabel: UILabel!
     @IBOutlet weak var reloadBtn: UIButton!
     @IBOutlet weak var optionBtn: UIButton!
+    // MARK: - Public Variables
+    public let label = UILabel()
+    public var results: [PHAsset] = []
+    public var fetchPhotos: PHFetchResult<PHAsset>?
+    public var index: Int?
+    public var loading = 0
+    public var isLoading = false
+    public var startIndex = 0
+    public var endIndex = 0
+    public var barcodeDatas: [UIImage] = []
+    public lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        activityIndicator.center = self.view.center
+        activityIndicator.color = UIColor.red
+        activityIndicator.hidesWhenStopped = true
+        return activityIndicator
+    }()
     
     // MARK: -IBAction Function
     @IBAction func reloadBtn(_ sender: Any) {
-        if !isLoading && checkRange(start: startIndex, end: endIndex) {
-            isLoading = true
-            // loading 초기화
-            loading = 0
-            // 애니메이션 시작
-            activityIndicator.startAnimating()
-            // UI변화
-            loadingPer.isHidden = false
-            fetchButton.isHidden = true
-            loadingLabel.isHidden = true
-            
-            barcodeDatas = []
-            
-            // UI변화는 main thread 에서
-            DispatchQueue.main.async { [self] in
-                collectionView.reloadData()
+        guard !isLoading, checkRange(start: startIndex, end: endIndex) else { return }
+        isLoading = true
+        resetLoadingState()
+        barcodeDatas = []
+        DispatchQueue.global().async { [weak self] in
+            self?.setPhotoLibraryImage()
+            DispatchQueue.main.async {
+                self?.updateUIAfterLoading()
+                self?.isLoading = false
             }
-            setPhotoLibraryImage()
-            
-            // UI변화는 main thread 에서
-            DispatchQueue.main.async { [self] in
-                collectionView.reloadData()
-                activityIndicator.stopAnimating()
-                loadingPer.isHidden = true
-            }
-            isLoading = false
         }
     }
     
@@ -59,66 +61,19 @@ class ViewController: UIViewController {
         }
     }
     
-    // MARK: - Public Variable
-    public var results: [PHAsset] = []
-    public var fetchPhotos: PHFetchResult<PHAsset>?
-    public var index: Int?
-    public let fileManager = FileManager.default
-    
-    // MARK: - Save to CoreData
-    func saveImageToLocal(image: UIImage) {
-        DispatchQueue.main.sync {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context = appDelegate.persistentContainer.viewContext
-            
-            let photo = NSEntityDescription.insertNewObject(forEntityName: "Contact", into: context)
-            let png = image.jpegData(compressionQuality: 1.0)
-            photo.setValue(png, forKey: "image")
-            
-            do {
-                try context.save()
-            } catch let error {
-                print(error.localizedDescription)
-            }
-        }
+    private func resetLoadingState() {
+        loading = 0
+        activityIndicator.startAnimating()
+        loadingPer.isHidden = false
+        fetchButton.isHidden = true
+        loadingLabel.isHidden = true
     }
-    
-    // MARK: - Fetch to CoreData
-    func fetchContact() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        do {
-            let contact = try context.fetch(Contact.fetchRequest())
-            if let photo = contact.last {
-                print(UIImage(data: photo.image!)!)
-            }
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
-    
-    // MARK: - Private Variable
-    public let label = UILabel()
-    public var barcodeDatas: [UIImage] = []
-    public var loading = 0
-    public var isLoading = false
-    public var startIndex = 0
-    public var endIndex = 0
-    
-    // MARK: - Loading Animation Indicator
-    lazy var activityIndicator: UIActivityIndicatorView = {
-        // Create an indicator.
-        let activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        activityIndicator.center = self.view.center
-        activityIndicator.color = UIColor.red
-        // Also show the indicator even when the animation is stopped.
-        activityIndicator.hidesWhenStopped = true
-        // Start animation.
+
+    private func updateUIAfterLoading() {
+        collectionView.reloadData()
         activityIndicator.stopAnimating()
-        return activityIndicator
-    }()
+        loadingPer.isHidden = true
+    }
     
     // MARK: - 이미지 스캔
     func scanImage(data: Data, photo: PHAsset) {
@@ -279,7 +234,6 @@ extension ViewController {
         }
         label.isHidden = true
         
-        fetchContact()
         collectionView.reloadData()
     }
     

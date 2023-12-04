@@ -15,50 +15,55 @@ extension ViewController {
     
     // MARK: - 사진 앱에서 이미지 가져오기
     func setPhotoLibraryImage() {
+        guard let fetchPhotos = fetchAssetsFromLibrary() else { return }
+
+        setLoadingState(true)
+        processImagesWithOperationQueue(fetchPhotos: fetchPhotos)
+    }
+
+    private func fetchAssetsFromLibrary() -> PHFetchResult<PHAsset>? {
         let fetchOption = PHFetchOptions()
         fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        fetchPhotos = PHAsset.fetchAssets(with: fetchOption)
-        
-        DispatchQueue.global().async { [self] in
-            isLoading = true
-            DispatchQueue.main.sync {
-                loadingPer.isHidden = false
-                fetchButton.isHidden = true
-                loadingLabel.isHidden = true
-                activityIndicator.startAnimating()
+        return PHAsset.fetchAssets(with: fetchOption)
+    }
+
+    private func setLoadingState(_ isLoading: Bool) {
+        DispatchQueue.main.async { [self] in
+            loadingPer.isHidden = !isLoading
+            fetchButton.isHidden = isLoading
+            loadingLabel.isHidden = isLoading
+            isLoading ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+        }
+    }
+
+    private func processImagesWithOperationQueue(fetchPhotos: PHFetchResult<PHAsset>) {
+        let processingQueue = OperationQueue()
+        processingQueue.maxConcurrentOperationCount = 5 // 동시에 실행할 작업 수
+
+        for index in 0..<fetchPhotos.count {
+            processingQueue.addOperation {
+                self.processImageAtIndex(index, from: fetchPhotos)
+            }
+        }
+    }
+
+    private func processImageAtIndex(_ index: Int, from fetchPhotos: PHFetchResult<PHAsset>) {
+        autoreleasepool {
+            if let photo = fetchPhotos.object(at: index) as PHAsset?,
+               let data = getAssetThumbnail(asset: photo).pngData() {
+                scanImage(data: data, photo: photo)
             }
         }
         
-        // a ~ b
-        // a ~ a + ((b-a) / 3)
-        let indexArr: [Int] = [startIndex - 1,
-                               startIndex - 1 + (endIndex - (startIndex - 1)) / 3,
-                               startIndex - 1 + (endIndex - (startIndex - 1)) / 3 * 2,
-                               endIndex]
-        
-        for i in 0..<3 {
-            DispatchQueue.global().async { [self] in
-                for j in indexArr[i]..<indexArr[i + 1] {
-                    loading += 1
-                    autoreleasepool {
-                        let photo: PHAsset? = fetchPhotos!.object(at: j)
-                        let image: UIImage? = getAssetThumbnail(asset: photo!)
-                        if let image = image{
-                            let data = image.pngData()
-                            if let data = data{
-                                scanImage(data: data, photo: photo!)
-                            }
-                        }
-                    }
-                    
-                    DispatchQueue.main.async { [self] in
-                        // 3
-                        setText()
-                        collectionView.reloadData()
-                        endLoading(count: loading, photos: endIndex - startIndex)
-                    }
-                }
-            }
+        DispatchQueue.main.async {
+            self.updateUIAfterImageProcessing()
         }
+    }
+
+    private func updateUIAfterImageProcessing() {
+        loading += 1
+        setText()
+        collectionView.reloadData()
+        endLoading(count: loading, photos: fetchPhotos?.count ?? 0)
     }
 }
